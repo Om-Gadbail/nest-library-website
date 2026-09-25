@@ -35,16 +35,16 @@ export const siteConfig = {
 
   /** Only real accounts. Placeholders are hidden by the footer. */
   socials: [
-    { label: "Instagram", href: "#", isPlaceholder: true },
-    { label: "Facebook", href: "#", isPlaceholder: true },
-    { label: "YouTube", href: "#", isPlaceholder: true },
+    { label: "Instagram", href: "", isPlaceholder: true },
+    { label: "Facebook", href: "", isPlaceholder: true },
+    { label: "YouTube", href: "", isPlaceholder: true },
   ] as SocialLink[],
 
   /** Cross-brand note. Keep subtle; never restyle Nest as Prime. */
   relatedBrand: {
     name: "Prime Fitness",
     note: "Study hard. Train smart.",
-    href: "#",
+    href: "",
     isPlaceholder: true,
   },
 } as const;

@@ -18,7 +18,9 @@ import { NestLogo } from "../brand/NestLogo.tsx";
 
 export function SiteFooter(): ReactNode {
   const whatsappHref = buildWhatsAppUrl("general");
-  const liveSocials = siteConfig.socials.filter((s) => !s.isPlaceholder);
+  const liveSocials = siteConfig.socials.filter(
+    (s) => !s.isPlaceholder && Boolean(s.href),
+  );
   const year = new Date().getFullYear();
 
   return (

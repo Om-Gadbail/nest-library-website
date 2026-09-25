@@ -53,7 +53,7 @@ export const contactConfig = {
   address: {
     label: "Address",
     value: "2nd Floor, New Narsala, Nagpur, Maharashtra, India",
-    href: "#location",
+    href: "/location",
     isPlaceholder: false,
   } as ContactChannel,
 

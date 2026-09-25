@@ -13,6 +13,7 @@ import { WhyNest } from "../components/sections/HomeSectionsA.tsx";
 import { FinalCTA } from "../components/sections/HomeSectionsC.tsx";
 import { PageTransition, FadeIn } from "../components/motion/Motion.tsx";
 import { routePaths } from "../config/navigation.ts";
+import { contactConfig } from "../config/contact.ts";
 import { organizationJsonLd } from "../lib/seo.ts";
 
 export function AboutPage(): ReactNode {
@@ -75,7 +76,9 @@ export function AboutPage(): ReactNode {
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-muted">Contact</dt>
-                  <dd className="text-right font-semibold">+91 70382 01884</dd>
+                  <dd className="text-right font-semibold">
+                    {contactConfig.phone.value}
+                  </dd>
                 </div>
               </dl>
               <Link

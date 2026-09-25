@@ -53,7 +53,7 @@ export function ContactPage(): ReactNode {
     <PageTransition>
       <Seo
         title="Contact Nest Library"
-        description="Contact Nest Library in New Narsala, Nagpur — call, WhatsApp or send an enquiry. +91 70382 01884."
+        description={`Contact Nest Library in New Narsala, Nagpur — call, WhatsApp or send an enquiry. ${contactConfig.phone.value}.`}
       />
       <PageHero
         eyebrow="Contact"

@@ -4,7 +4,7 @@
  * smooth mobile drawer with clear CTAs. All labels/paths centralized.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, MessageCircle, X } from "lucide-react";
@@ -22,6 +22,8 @@ export function SiteHeader(): ReactNode {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const whatsappHref = buildWhatsAppUrl("general");
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = (): void => {
@@ -40,10 +42,35 @@ export function SiteHeader(): ReactNode {
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (event: KeyboardEvent): void => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+      // Keep Tab cycling inside the drawer while it is open.
+      if (event.key === "Tab" && mobileNavRef.current) {
+        const focusables =
+          mobileNavRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    // Move focus into the drawer on open for keyboard/screen-reader users.
+    mobileNavRef.current
+      ?.querySelector<HTMLElement>("a[href], button:not([disabled])")
+      ?.focus();
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
@@ -120,6 +147,7 @@ export function SiteHeader(): ReactNode {
               {siteConfig.cta.secondary}
             </Button>
             <button
+              ref={menuButtonRef}
               type="button"
               className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/20 text-white lg:hidden"
               aria-expanded={menuOpen}
@@ -141,6 +169,7 @@ export function SiteHeader(): ReactNode {
 
       {menuOpen && (
         <nav
+          ref={mobileNavRef}
           id="mobile-menu"
           aria-label="Mobile"
           className="nest-dark-deep max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 lg:hidden"

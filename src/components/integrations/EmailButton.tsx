@@ -22,6 +22,9 @@ export function EmailButton({
   className,
 }: EmailButtonProps): ReactNode {
   const address = env.email ?? contactConfig.email.value;
+  // No verified Nest email yet → hide the CTA entirely (Point 19:
+  // never invent or display a guessed address).
+  if (!address || contactConfig.email.isPlaceholder) return null;
   const href = subject
     ? `mailto:${address}?subject=${encodeURIComponent(subject)}`
     : `mailto:${address}`;

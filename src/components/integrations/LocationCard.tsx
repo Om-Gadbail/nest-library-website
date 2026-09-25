@@ -11,6 +11,7 @@ import { GetDirectionsButton } from "./GetDirectionsButton.tsx";
 import { GoogleMap } from "./GoogleMap.tsx";
 import { contactConfig } from "../../config/contact.ts";
 import { businessConfig } from "../../config/business.ts";
+import { env } from "../../lib/env.ts";
 
 interface LocationCardProps {
   className?: string;
@@ -21,6 +22,11 @@ export function LocationCard({
   className,
   showMap = false,
 }: LocationCardProps): ReactNode {
+  // Mirrors GetDirectionsButton's config check so no empty action
+  // wrapper renders while directions are unconfigured.
+  const hasDirections = Boolean(
+    env.googleDirectionsUrl ?? contactConfig.directionsUrl,
+  );
   return (
     <Card className={className}>
       <CardContent className="space-y-4">
@@ -63,9 +69,11 @@ export function LocationCard({
           </div>
         </div>
         {showMap && <GoogleMap />}
-        <div className="flex flex-wrap gap-2">
-          <GetDirectionsButton />
-        </div>
+        {hasDirections && (
+          <div className="flex flex-wrap gap-2">
+            <GetDirectionsButton />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
