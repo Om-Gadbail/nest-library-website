@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Placeholder graphic — not a real photograph of Nest Library">
+  <rect width="800" height="600" fill="#EFF0EC"/>
+  <rect x="32" y="32" width="736" height="536" rx="24" fill="none" stroke="#1A3C34" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="14 10"/>
+  <g fill="none" stroke="#1A3C34" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="352" y="230" width="96" height="76" rx="10"/>
+    <circle cx="376" cy="254" r="8"/>
+    <path d="M352 282l28-24 20 16 24-20 24 18"/>
+  </g>
+  <text x="400" y="360" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="#1A1E1C">Placeholder image</text>
+  <text x="400" y="392" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#5F6B66">Not a real photo of Nest Library</text>
+</svg>

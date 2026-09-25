@@ -1,0 +1,48 @@
+/**
+ * Nest Library — motion stylesheet (foundation).
+ * Complements Motion primitives: CSS-only transitions for trivial states,
+ * keyframes for the spinner/skeleton, and reduced-motion degradation.
+ * Motion (JS) handles viewport entry, sequencing, gestures and layout.
+ */
+
+/* Trivial interactive transitions — prefer these over Motion. */
+.nest-transition-colors {
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.nest-transition-opacity {
+  transition: opacity 0.15s ease;
+}
+
+/* Page-enter fade (applied by PageTransition fallback / no-JS). */
+@keyframes nest-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nest-fade-in {
+  animation: nest-fade-in 0.2s ease-out both;
+}
+
+/* Reduced motion: kill CSS animation/transition movement globally.
+ * (globals.css already covers the base; this keeps motion.css self-contained
+ * for any keyframes added here.) */
+@media (prefers-reduced-motion: reduce) {
+  .nest-fade-in {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
