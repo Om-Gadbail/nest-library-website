@@ -26,6 +26,8 @@ export const env = {
   googleDirectionsUrl: readEnv("VITE_GOOGLE_DIRECTIONS_URL"),
   /** Analytics measurement ID (provider connected later). */
   analyticsId: readEnv("VITE_ANALYTICS_ID"),
+  /** Future FastAPI backend base URL (empty = BACKEND-READY outbox mode). */
+  apiBaseUrl: readEnv("VITE_API_BASE_URL"),
 } as const;
 
 export type Env = typeof env;

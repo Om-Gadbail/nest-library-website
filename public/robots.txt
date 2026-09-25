@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Production sitemap URL will be added once the domain is configured.
+# Production sitemap URL — replace example.com once the domain is configured.
 # Sitemap: https://example.com/sitemap.xml

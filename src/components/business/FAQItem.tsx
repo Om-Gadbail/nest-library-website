@@ -1,27 +1,43 @@
+/**
+ * Nest Library — accessible FAQ accordion item with analytics.
+ */
+
 import { useId, useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "../../lib/cn.ts";
+import { trackEvent } from "../../lib/analytics.ts";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion.ts";
 import type { Faq } from "../../types/content.ts";
 
-/**
- * FAQ disclosure item. Uses a native <button> + region wiring so keyboard
- * and screen-reader behaviour is correct. Motion height animation is added
- * during the UI build; this foundation keeps state + semantics ready.
- */
-export function FAQItem({ faq }: { faq: Faq }): ReactNode {
-  const [open, setOpen] = useState(false);
+export function FAQItem({
+  faq,
+  defaultOpen = false,
+}: {
+  faq: Faq;
+  defaultOpen?: boolean;
+}): ReactNode {
+  const [open, setOpen] = useState(defaultOpen);
   const panelId = useId();
+  const reduce = usePrefersReducedMotion();
 
   return (
-    <div className="rounded-md border border-border bg-card">
+    <div
+      className={cn(
+        "rounded-lg border bg-card transition-colors",
+        open ? "border-navy/30 shadow-card" : "border-border",
+      )}
+    >
       <button
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => {
-          setOpen((value) => !value);
+          const next = !open;
+          setOpen(next);
+          if (next) trackEvent("faq_open", { id: faq.id });
         }}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold"
+        className="flex min-h-[56px] w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold"
       >
         <span>{faq.question}</span>
         <ChevronDown
@@ -32,11 +48,21 @@ export function FAQItem({ faq }: { faq: Faq }): ReactNode {
           )}
         />
       </button>
-      {open && (
-        <div id={panelId} role="region" className="px-5 pb-5 text-muted">
-          {faq.answer}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={panelId}
+            role="region"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: reduce ? 0.01 : 0.22 }}
+            className="overflow-hidden"
+          >
+            <p className="px-5 pb-5 leading-relaxed text-muted">{faq.answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

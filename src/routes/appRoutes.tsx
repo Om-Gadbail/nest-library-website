@@ -1,192 +1,162 @@
+import { Suspense, lazy } from "react";
+import type { ComponentType, ReactNode } from "react";
 import type { RouteObject } from "react-router-dom";
 import { RootLayout } from "../layouts/RootLayout.tsx";
-import { FoundationHomePage } from "../pages/FoundationHomePage.tsx";
+import { LoadingFallback } from "../components/common/LoadingFallback.tsx";
 import { NotFoundPage } from "../pages/NotFoundPage.tsx";
-import { PlaceholderPage } from "../pages/PlaceholderPage.tsx";
-import { routePaths } from "../config/navigation.ts";
 
 /**
- * Central route table — extend by adding a real page component and swapping
- * it in for the PlaceholderPage entry. Lazy-load heavy pages later via
- * React.lazy + <Suspense> without changing this shape.
+ * Central route table — every public page is a real page.
+ * No dead routes. Legacy aliases render the canonical page.
+ * Non-critical pages lazy-load (one chunk per page module).
  */
+
+function page<T extends object>(
+  importer: () => Promise<T>,
+  select: (module: T) => ComponentType,
+): ComponentType {
+  return lazy(() => importer().then((module) => ({ default: select(module) })));
+}
+
+const HomePage = page(
+  () => import("../pages/HomePage.tsx"),
+  (m) => m.HomePage,
+);
+const AboutPage = page(
+  () => import("../pages/AboutPage.tsx"),
+  (m) => m.AboutPage,
+);
+const StudyEnvironmentPage = page(
+  () => import("../pages/StudyEnvironmentPage.tsx"),
+  (m) => m.StudyEnvironmentPage,
+);
+const FacilitiesPage = page(
+  () => import("../pages/FacilitiesPage.tsx"),
+  (m) => m.FacilitiesPage,
+);
+const SeatsPage = page(
+  () => import("../pages/SeatsPages.tsx"),
+  (m) => m.SeatsPage,
+);
+const RegularSeatPage = page(
+  () => import("../pages/SeatsPages.tsx"),
+  (m) => m.RegularSeatPage,
+);
+const ConfirmedSeatPage = page(
+  () => import("../pages/SeatsPages.tsx"),
+  (m) => m.ConfirmedSeatPage,
+);
+const MembershipPage = page(
+  () => import("../pages/MembershipPages.tsx"),
+  (m) => m.MembershipPage,
+);
+const AdmissionPage = page(
+  () => import("../pages/MembershipPages.tsx"),
+  (m) => m.AdmissionPage,
+);
+const OpeningOfferPage = page(
+  () => import("../pages/MembershipPages.tsx"),
+  (m) => m.OpeningOfferPage,
+);
+const GalleryPage = page(
+  () => import("../pages/GalleryPages.tsx"),
+  (m) => m.GalleryPage,
+);
+const MemberStoriesPage = page(
+  () => import("../pages/GalleryPages.tsx"),
+  (m) => m.MemberStoriesPage,
+);
+const ReviewsPage = page(
+  () => import("../pages/GalleryPages.tsx"),
+  (m) => m.ReviewsPage,
+);
+const RulesPage = page(
+  () => import("../pages/InfoPages.tsx"),
+  (m) => m.RulesPage,
+);
+const FaqPage = page(
+  () => import("../pages/InfoPages.tsx"),
+  (m) => m.FaqPage,
+);
+const LocationPage = page(
+  () => import("../pages/InfoPages.tsx"),
+  (m) => m.LocationPage,
+);
+const ContactPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.ContactPage,
+);
+const BookVisitPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.BookVisitPage,
+);
+const SeatInquiryPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.SeatInquiryPage,
+);
+const MembershipInquiryPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.MembershipInquiryPage,
+);
+const JoinPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.JoinPage,
+);
+const PrivacyPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.PrivacyPage,
+);
+const TermsPage = page(
+  () => import("../pages/ConversionPages.tsx"),
+  (m) => m.TermsPage,
+);
+
+function withSuspense(Component: ComponentType): ReactNode {
+  return (
+    <Suspense fallback={<LoadingFallback label="Loading page…" />}>
+      <Component />
+    </Suspense>
+  );
+}
+
 export const appRoutes: RouteObject[] = [
   {
-    path: routePaths.home,
+    path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <FoundationHomePage /> },
-      {
-        path: "about",
-        element: (
-          <PlaceholderPage
-            title="About Nest"
-            description="The story, values and study philosophy of Nest Library will live here."
-          />
-        ),
-      },
-      {
-        path: "facilities",
-        element: (
-          <PlaceholderPage
-            title="Facilities"
-            description="Verified Nest facilities — quiet halls, connectivity and amenities — will be listed here."
-          />
-        ),
-      },
-      {
-        path: "membership",
-        element: (
-          <PlaceholderPage
-            title="Membership plans"
-            description="Real membership durations, seat types and fees will be published here once confirmed."
-          />
-        ),
-      },
-      {
-        path: "membership-plans",
-        element: (
-          <PlaceholderPage
-            title="Membership plans"
-            description="Real membership durations, seat types and fees will be published here once confirmed."
-          />
-        ),
-      },
-      {
-        path: "seats",
-        element: (
-          <PlaceholderPage
-            title="Seat options"
-            description="Real seat types, features and availability will be listed here once confirmed."
-          />
-        ),
-      },
-      {
-        path: "seats/regular",
-        element: (
-          <PlaceholderPage
-            title="Regular seat"
-            description="Details of the regular seat option will be published here once confirmed."
-          />
-        ),
-      },
-      {
-        path: "seats/confirmed",
-        element: (
-          <PlaceholderPage
-            title="Confirmed seat"
-            description="Details of the confirmed seat option will be published here once confirmed."
-          />
-        ),
-      },
+      { index: true, element: withSuspense(HomePage) },
+      { path: "about", element: withSuspense(AboutPage) },
       {
         path: "study-environment",
-        element: (
-          <PlaceholderPage
-            title="Study environment"
-            description="What a focused day at Nest feels like — atmosphere, rhythm and expectations — will be described here."
-          />
-        ),
+        element: withSuspense(StudyEnvironmentPage),
       },
-      {
-        path: "photos",
-        element: (
-          <PlaceholderPage
-            title="Photos"
-            description="Real photographs of the Nest space will be showcased here. Placeholder graphics only until then."
-          />
-        ),
-      },
-      {
-        path: "rules",
-        element: (
-          <PlaceholderPage
-            title="Rules"
-            description="Verified community rules for a distraction-free environment will be published here."
-          />
-        ),
-      },
-      {
-        path: "faq",
-        element: (
-          <PlaceholderPage
-            title="FAQ"
-            description="Answers to common questions about seats, membership, timings and visits will live here."
-          />
-        ),
-      },
-      {
-        path: "location",
-        element: (
-          <PlaceholderPage
-            title="Location"
-            description="Verified address, map and directions will be published here."
-          />
-        ),
-      },
-      {
-        path: "admission",
-        element: (
-          <PlaceholderPage
-            title="Admission"
-            description="The step-by-step admission process will be explained here."
-          />
-        ),
-      },
-      {
-        path: "contact",
-        element: (
-          <PlaceholderPage
-            title="Contact"
-            description="Verified phone, WhatsApp, email and enquiry options will live here."
-          />
-        ),
-      },
-      {
-        path: "seat-inquiry",
-        element: (
-          <PlaceholderPage
-            title="Seat inquiry"
-            description="The seat enquiry flow will live here. Forms arrive in a later phase."
-          />
-        ),
-      },
-      {
-        path: "book-a-visit",
-        element: (
-          <PlaceholderPage
-            title="Book a visit"
-            description="The visit-booking flow will live here. Forms arrive in a later phase."
-          />
-        ),
-      },
-      {
-        path: "book-visit",
-        element: (
-          <PlaceholderPage
-            title="Book a visit"
-            description="The visit-booking flow will live here. Forms arrive in a later phase."
-          />
-        ),
-      },
-      {
-        path: "join",
-        element: (
-          <PlaceholderPage
-            title="Join Nest"
-            description="The joining flow will live here. Forms arrive in a later phase."
-          />
-        ),
-      },
+      { path: "facilities", element: withSuspense(FacilitiesPage) },
+      { path: "seats", element: withSuspense(SeatsPage) },
+      { path: "seats/regular", element: withSuspense(RegularSeatPage) },
+      { path: "seats/confirmed", element: withSuspense(ConfirmedSeatPage) },
+      { path: "membership", element: withSuspense(MembershipPage) },
+      { path: "membership-plans", element: withSuspense(MembershipPage) },
+      { path: "admission", element: withSuspense(AdmissionPage) },
+      { path: "opening-offer", element: withSuspense(OpeningOfferPage) },
+      { path: "gallery", element: withSuspense(GalleryPage) },
+      { path: "photos", element: withSuspense(GalleryPage) },
+      { path: "member-stories", element: withSuspense(MemberStoriesPage) },
+      { path: "reviews", element: withSuspense(ReviewsPage) },
+      { path: "rules", element: withSuspense(RulesPage) },
+      { path: "faq", element: withSuspense(FaqPage) },
+      { path: "location", element: withSuspense(LocationPage) },
+      { path: "contact", element: withSuspense(ContactPage) },
+      { path: "book-a-visit", element: withSuspense(BookVisitPage) },
+      { path: "book-visit", element: withSuspense(BookVisitPage) },
+      { path: "seat-inquiry", element: withSuspense(SeatInquiryPage) },
       {
         path: "membership-inquiry",
-        element: (
-          <PlaceholderPage
-            title="Membership inquiry"
-            description="The membership enquiry flow will live here. Forms arrive in a later phase."
-          />
-        ),
+        element: withSuspense(MembershipInquiryPage),
       },
+      { path: "join-nest", element: withSuspense(JoinPage) },
+      { path: "join", element: withSuspense(JoinPage) },
+      { path: "privacy", element: withSuspense(PrivacyPage) },
+      { path: "terms", element: withSuspense(TermsPage) },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

@@ -1,0 +1,2270 @@
+Absolutely. The image gives us the **visual direction** now. I would not copy that website literally; I would take its **design language and layout principles** and combine them with the finalized Nest features and the Nest brand from your poster.
+
+The target should feel like:
+
+> **Premium study space + modern education brand + calm workspace + strong local business conversion.**
+
+Not like a generic "library template." 📚✨
+
+Below is the **UI/Frontend Master Plan** that you can put directly into `docs/UI_FRONTEND_MASTER_PLAN.md` and give to the coding agent as the visual/product specification.
+
+---
+
+# NEST LIBRARY
+
+# UI & FRONTEND MASTER DESIGN PLAN
+
+**Status:** Design Specification
+**Purpose:** Authoritative UI/UX direction for the Nest Library public website
+**Implementation:** React + TypeScript + Vite + Tailwind CSS + Motion
+**Design principle:** Premium, calm, focused, modern, conversion-oriented, mobile-first
+
+---
+
+# 1. DESIGN VISION
+
+The Nest Library website should communicate five things within seconds:
+
+1. **This is a serious study environment.**
+2. **The space looks comfortable and premium.**
+3. **There are clear seat and membership options.**
+4. **The visitor can easily enquire or visit.**
+5. **Nest feels like a real local business, not a generic template.**
+
+The reference image establishes the broad visual direction:
+
+* Dark premium hero
+* Strong typography
+* Large visual imagery
+* Spacious white sections
+* Image + text storytelling
+* Card-based feature presentation
+* Strong orange CTA
+* Dark footer
+* Minimal navigation
+* Large visual hierarchy
+* Premium editorial feel
+
+For Nest, this should be combined with the actual Nest identity:
+
+```text
+NEST LIBRARY
+SELF STUDY CENTER
+CO-WORKING SPACE
+
+Better Space Bigger Dreams
+Your Study Space, Our Priority
+```
+
+---
+
+# 2. DESIGN PERSONALITY
+
+The website should feel:
+
+### Calm
+
+The visitor should feel that Nest is a place where they can concentrate.
+
+### Premium
+
+It should feel worth paying for.
+
+### Academic
+
+Typography and spacing should feel intelligent and mature.
+
+### Modern
+
+The UI should not look like an old-school library website.
+
+### Warm
+
+The orange/gold brand accents should prevent it from feeling cold.
+
+### Trustworthy
+
+Pricing, rules, facilities and contact information should be clear.
+
+### Conversion-focused
+
+Every important section should naturally lead toward:
+
+* View Plans
+* Check Availability
+* Book a Visit
+* WhatsApp
+* Join Nest
+
+---
+
+# 3. WHAT WE ARE TAKING FROM THE REFERENCE IMAGE
+
+The reference image should influence the **layout language**, not become a copy.
+
+## Take:
+
+### 1. Dark premium hero
+
+Large hero image + strong heading + CTA.
+
+### 2. Large typography
+
+Headlines should be visually dominant.
+
+### 3. Alternating content sections
+
+Image → text
+Text → image
+Image → text
+
+### 4. Image cards
+
+Use photographs of the actual Nest environment.
+
+### 5. Generous whitespace
+
+Don't fill every pixel.
+
+### 6. Strong orange CTA
+
+Use Nest's orange as the action color.
+
+### 7. Dark footer
+
+Premium dark footer with organized columns.
+
+### 8. Editorial storytelling
+
+The website should feel like a story:
+
+```text
+Discover Nest
+↓
+Understand Nest
+↓
+See the environment
+↓
+Explore seats
+↓
+See pricing
+↓
+Trust Nest
+↓
+Visit
+↓
+Join
+```
+
+---
+
+# 4. WHAT WE SHOULD NOT COPY
+
+Do not copy:
+
+* Exact layout
+* Exact typography
+* Generic travel images
+* Generic book imagery
+* Generic wording
+* Fake statistics
+* Fake testimonials
+* Excessive cards
+* Unnecessary sections
+* Generic orange/black SaaS styling
+
+Nest should use **real Nest photography**.
+
+---
+
+# 5. BRAND COLOR SYSTEM
+
+Based on the actual Nest poster, the primary visual family should be:
+
+### Deep Navy
+
+Used for:
+
+* Navbar
+* Hero
+* Footer
+* Important headings/backgrounds
+
+### Nest Orange
+
+Used for:
+
+* Primary CTA
+* Offer highlights
+* Active states
+* Important badges
+* Small accents
+
+### Warm Gold / Yellow
+
+Used for:
+
+* Opening offer
+* Best Value
+* Highlights
+* Decorative details
+
+### Green
+
+Used sparingly because it appears in the actual logo.
+
+### White
+
+Main content background.
+
+### Soft Warm Gray
+
+Secondary backgrounds.
+
+---
+
+# 6. COLOR RULE
+
+Do not make the entire website orange.
+
+Use approximately:
+
+```text
+Dark / Navy     → 25–30%
+White           → 50–60%
+Soft neutral    → 10–15%
+Orange/Gold     → 5–10%
+```
+
+The result should feel **premium**, not loud.
+
+---
+
+# 7. TYPOGRAPHY
+
+Use a modern, highly readable font system.
+
+Recommended:
+
+### Primary
+
+**Inter**
+
+or
+
+**Manrope**
+
+### Optional display font
+
+A restrained serif can be used for a few major editorial headings if it genuinely improves the design.
+
+But don't use multiple decorative fonts.
+
+Target:
+
+```text
+1 primary font
+1 optional display font
+```
+
+Maximum.
+
+---
+
+# 8. TYPOGRAPHIC HIERARCHY
+
+Desktop:
+
+```text
+Hero heading
+64–80px
+
+Section heading
+42–56px
+
+Subheading
+24–32px
+
+Body
+16–18px
+
+Small text
+13–15px
+```
+
+Mobile:
+
+```text
+Hero
+40–48px
+
+Section
+32–38px
+
+Subheading
+22–26px
+
+Body
+16px
+```
+
+Typography must scale fluidly where appropriate.
+
+---
+
+# 9. GLOBAL LAYOUT
+
+Maximum content width:
+
+```text
+1200–1280px
+```
+
+Wide desktop:
+
+```text
+max-width: 1280px
+```
+
+Mobile:
+
+```text
+padding: 20px
+```
+
+Tablet:
+
+```text
+padding: 32px
+```
+
+Desktop:
+
+```text
+padding: 48px
+```
+
+No unnecessarily narrow content.
+
+---
+
+# 10. NAVBAR
+
+The navbar should resemble the reference image's clean premium header.
+
+## Desktop
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ NEST LOGO   About  Facilities  Seats  Membership  Gallery    │
+│                                              [Book a Visit] │
+└──────────────────────────────────────────────────────────────┘
+```
+
+Recommended:
+
+* Transparent/dark hero navbar initially
+* Sticky after scrolling
+* Slight background transition after scroll
+* Logo on left
+* Navigation centered/right
+* CTA on right
+
+Primary CTA:
+
+**Book a Visit**
+
+Secondary icon/action:
+
+**WhatsApp**
+
+---
+
+# 11. MOBILE NAVBAR
+
+```text
+NEST LOGO                              ☰
+```
+
+Opening menu:
+
+```text
+Home
+About
+Facilities
+Seats
+Membership
+Gallery
+Reviews
+FAQ
+Location
+Contact
+
+────────────
+
+[Book a Visit]
+[WhatsApp Us]
+```
+
+The menu should be:
+
+* Full-height or large panel
+* Smooth Motion
+* Keyboard accessible
+* Escape closes
+* Focus managed
+* Touch friendly
+
+---
+
+# 12. ANNOUNCEMENT BAR
+
+Above or integrated into navbar:
+
+```text
+🔥 OPENING OFFER
+Special introductory prices for early admissions
+[View Plans]
+```
+
+This should be configurable.
+
+When the offer expires:
+
+```text
+announcement.active = false
+```
+
+and it disappears automatically.
+
+---
+
+# 13. HERO DESIGN
+
+This is the most visually important area.
+
+## Desktop
+
+Use a large full-width dark hero.
+
+Possible composition:
+
+```text
+┌────────────────────────────────────────────────────────────┐
+│ NAVBAR                                                     │
+│                                                            │
+│       LEFT                           RIGHT                 │
+│                                                            │
+│ NEST LIBRARY                      Large real Nest image    │
+│                                                            │
+│ SELF STUDY CENTER                                          │
+│ CO-WORKING SPACE                                           │
+│                                                            │
+│ Better Space Bigger Dreams                                 │
+│                                                            │
+│ A focused space for serious study and productive work.     │
+│                                                            │
+│ [View Admission Plans] [Book a Visit]                     │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+On some screen sizes the image can become a full background with a dark overlay.
+
+---
+
+# 14. HERO IMAGE
+
+**Use actual Nest photography.**
+
+Possible hero imagery:
+
+* Study desks
+* Interior
+* Students studying
+* Seat rows
+* Premium close-up of workspace
+
+Avoid generic stock photos if actual Nest images are available.
+
+---
+
+# 15. HERO BRAND ELEMENT
+
+Small label:
+
+```text
+SELF STUDY CENTER • CO-WORKING SPACE
+```
+
+Main:
+
+> **Better Space Bigger Dreams**
+
+Supporting:
+
+> Your Study Space, Our Priority.
+
+Then CTAs.
+
+---
+
+# 16. HERO TRUST DETAILS
+
+Small line below CTA:
+
+```text
+❄ Air Cooling
+📶 Wi-Fi
+👥 Unisex
+🪑 Study Space
+```
+
+These are currently based on the supplied poster and can be updated as more confirmed facilities are provided.
+
+---
+
+# 17. HERO MOTION
+
+On load:
+
+1. Background/image appears
+2. Logo/eyebrow fades in
+3. Heading reveals
+4. Description appears
+5. CTA buttons appear
+6. Supporting facilities appear
+
+Use subtle:
+
+```text
+opacity
+translateY
+scale
+```
+
+No dramatic animations.
+
+---
+
+# 18. HERO MOBILE
+
+Mobile should become:
+
+```text
+NEST LIBRARY
+
+SELF STUDY CENTER
+CO-WORKING SPACE
+
+Better Space
+Bigger Dreams
+
+[real Nest image]
+
+[View Plans]
+[Book a Visit]
+
+Air Cooling • Wi-Fi • Unisex
+```
+
+Image should not be too tall.
+
+---
+
+# 19. 10-SECOND OPENING OFFER POPUP
+
+This is a required feature.
+
+### Trigger
+
+**10 seconds after initial page load.**
+
+### Desktop
+
+Centered modal.
+
+### Mobile
+
+Bottom sheet or near-full-screen modal.
+
+Design:
+
+```text
+🔥 OPENING OFFER
+
+Special introductory prices
+for early admissions.
+
+🎁 Free Registration
+
+🪑 Priority Seat Selection
+for Confirmed Seat members
+
+[View Admission Plans]
+
+[WhatsApp Us]
+
+                         ×
+```
+
+### Behavior
+
+* Trigger once per session
+* Close button
+* Escape key
+* Click outside closes
+* Focus trap
+* Accessible
+* Reduced motion
+* Mobile optimized
+* Analytics
+* Don't immediately reopen after closing
+
+### Important
+
+Don't call this **Free Trial** unless the owner confirms that Nest offers a free trial.
+
+Current verified wording:
+
+**Free Registration for early admissions.**
+
+---
+
+# 20. QUICK VALUE SECTION
+
+After hero:
+
+```text
+Why Nest?
+
+A focused space designed around
+your study goals.
+```
+
+Three/four visual cards.
+
+Example:
+
+```text
+Focus
+A dedicated environment for serious study.
+
+Comfort
+A setup designed for extended study.
+
+Convenience
+Everything you need for productive sessions.
+
+Community
+A focused environment shared by learners.
+```
+
+Only use claims supported by actual business details.
+
+---
+
+# 21. STORYTELLING SECTION
+
+Take inspiration from the reference image's image/text storytelling.
+
+Example:
+
+```text
+[Large image]       A Space Built for Focus
+
+                     Nest is designed around
+                     the experience of studying
+                     consistently.
+
+                     [Explore Nest]
+```
+
+Then:
+
+```text
+Study Better          [Large image]
+```
+
+Then:
+
+```text
+[Image]               Your Time Matters
+```
+
+This creates a premium editorial rhythm.
+
+---
+
+# 22. STUDY ENVIRONMENT SECTION
+
+Large visual section.
+
+Heading:
+
+> **Your Study Space, Our Priority**
+
+Use actual images.
+
+Content:
+
+```text
+Focused environment
+Comfortable workspace
+Study-friendly setup
+Convenient facilities
+```
+
+CTA:
+
+**Explore the Environment**
+
+---
+
+# 23. WHO IS NEST FOR?
+
+Use visually distinct cards.
+
+```text
+┌──────────────┐
+│ 🎓           │
+│ Students     │
+└──────────────┘
+
+┌──────────────┐
+│ 📚           │
+│ Exam Prep    │
+└──────────────┘
+
+┌──────────────┐
+│ 💼           │
+│ Professionals│
+└──────────────┘
+```
+
+Cards should not feel like SaaS feature cards.
+
+Use photography or subtle editorial imagery where possible.
+
+---
+
+# 24. FACILITIES SECTION
+
+Heading:
+
+> **Everything You Need to Stay Focused**
+
+Current confirmed:
+
+```text
+Air Cooling
+Wi-Fi
+Unisex
+Convenience Space
+```
+
+Use icon + short text.
+
+Possible future items:
+
+```text
+Charging
+Lockers
+Water
+Parking
+Washrooms
+CCTV
+Power Backup
+```
+
+Only when confirmed.
+
+---
+
+# 25. FACILITY CARD DESIGN
+
+Instead of generic rounded cards everywhere:
+
+```text
+[Icon]
+
+AIR COOLING
+Comfortable study environment.
+
+────────────
+```
+
+Use subtle borders.
+
+Avoid huge shadows.
+
+---
+
+# 26. SEAT EXPERIENCE SECTION
+
+This should be visually strong.
+
+Heading:
+
+> **Choose Your Space**
+
+Two large cards.
+
+### Regular Seat
+
+```text
+REGULAR SEAT
+
+From ₹699*
+Opening offer
+
+[View Details]
+```
+
+### Confirmed Seat
+
+```text
+CONFIRMED SEAT
+
+From ₹899*
+Opening offer
+
+Priority Seat Selection
+
+[View Details]
+```
+
+---
+
+# 27. PRICING DESIGN
+
+This should be one of the most polished components.
+
+Desktop:
+
+```text
+             REGULAR              CONFIRMED
+
+1 MONTH       ₹699                  ₹899
+3 MONTHS      ₹1,999                ₹2,599
+6 MONTHS      ₹3,999                ₹4,999
+8 MONTHS      ₹4,999                ₹5,999
+12 MONTHS     ₹7,999                ₹9,999
+```
+
+Include:
+
+**Opening Offer**
+
+and
+
+**Best Value**
+
+where applicable.
+
+---
+
+# 28. STANDARD VS OPENING PRICE
+
+On plan detail:
+
+```text
+Regular price
+
+₹4,800
+
+Opening offer
+
+₹3,999
+```
+
+Use restrained price emphasis.
+
+Don't make the pricing page look like a discount marketplace.
+
+Nest should remain premium.
+
+---
+
+# 29. MEMBERSHIP CALCULATOR
+
+Interactive:
+
+```text
+Seat Type
+[Regular ▼]
+
+Duration
+[6 Months ▼]
+
+Standard
+₹4,800
+
+Opening Offer
+₹3,999
+
+You Save
+₹801
+
+[Enquire Now]
+```
+
+This can later become dynamically connected to the backend.
+
+---
+
+# 30. OPENING SPECIAL
+
+Visual strip:
+
+```text
+🎁 FREE REGISTRATION
+For early admissions
+
++
+
+🪑 PRIORITY SEAT SELECTION
+For Confirmed Seat members
+```
+
+Use gold/yellow accent.
+
+---
+
+# 31. HOW IT WORKS
+
+Simple four-step section:
+
+```text
+01
+Choose Your Plan
+
+↓
+
+02
+Select Your Seat
+
+↓
+
+03
+Visit / Enquire
+
+↓
+
+04
+Start Your Study Journey
+```
+
+Later, when online booking exists, this becomes:
+
+```text
+Choose
+→
+Reserve
+→
+Pay
+→
+Get Confirmation
+```
+
+---
+
+# 32. GALLERY
+
+Take inspiration from the reference image's visual gallery, but make it **Nest-specific**.
+
+Use masonry/editorial grid:
+
+```text
+┌──────────────┬───────────┐
+│              │           │
+│ Large image  │ image     │
+│              │           │
+├──────────────┼───────────┤
+│ image        │ large     │
+│              │ image     │
+└──────────────┴───────────┘
+```
+
+Categories:
+
+* All
+* Study Space
+* Seats
+* Facilities
+* Interior
+* Exterior
+
+---
+
+# 33. IMAGE LIGHTBOX
+
+Click image:
+
+```text
+┌──────────────────────────┐
+│                          │
+│        IMAGE             │
+│                          │
+│  ←                  →    │
+│                          │
+│                         ×│
+└──────────────────────────┘
+```
+
+Features:
+
+* Keyboard arrows
+* Escape
+* Touch swipe
+* Zoom only if useful
+* Accessible labels
+
+---
+
+# 34. MEMBER STORIES
+
+Editorial layout.
+
+```text
+[Member photo]
+
+"Nest helped me maintain
+a consistent study routine."
+
+Name
+Goal
+```
+
+No fabricated content.
+
+Until genuine stories exist, this section can remain hidden or use a clearly marked content placeholder during development.
+
+---
+
+# 35. REVIEWS
+
+Large quote:
+
+> "★★★★★"
+
+Then review.
+
+Use a horizontal carousel only if there are enough genuine reviews.
+
+Don't make a carousel with two testimonials just because the UI supports it.
+
+---
+
+# 36. SOCIAL PROOF STRIP
+
+Potential:
+
+```text
+Google Reviews
+★★★★★
+
+[See Reviews]
+```
+
+Only after actual Google Business data is available.
+
+---
+
+# 37. RULES SECTION
+
+Rather than dumping the entire rules page on homepage:
+
+```text
+A Focused Environment Needs
+Clear Expectations.
+
+[View Nest Rules]
+```
+
+Then detailed rules live on `/rules`.
+
+---
+
+# 38. FAQ SECTION
+
+Use accordion.
+
+Example:
+
+```text
+What is Nest Library?
+                  +
+
+What is the difference between Regular
+and Confirmed Seat?
+                  +
+
+What are the current admission plans?
+                  +
+
+Can I visit before joining?
+                  +
+```
+
+Only factual answers.
+
+---
+
+# 39. LOCATION SECTION
+
+Visually strong split:
+
+```text
+LEFT                         RIGHT
+
+Nest Library                [MAP]
+
+2nd Floor
+[Full address]
+
+[Get Directions]
+[WhatsApp]
+```
+
+When full address is supplied.
+
+---
+
+# 40. FINAL CTA
+
+This should be visually dramatic.
+
+Dark background.
+
+> **Ready to Find Your Study Space?**
+
+Supporting:
+
+> Explore the plans or visit Nest and experience the environment yourself.
+
+Buttons:
+
+**View Admission Plans**
+
+**Book a Visit**
+
+**WhatsApp Us**
+
+---
+
+# 41. FOOTER
+
+Reference image has a strong dark footer. We should use that.
+
+Structure:
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│ NEST LIBRARY                    Explore                     │
+│ Better Space Bigger Dreams      About                       │
+│                                  Facilities                  │
+│ [Instagram] [Facebook]           Seats                       │
+│                                  Membership                 │
+│                                  Gallery                    │
+│                                                             │
+│ Contact                          Visit                      │
+│ 7038201884                       2nd Floor                  │
+│ WhatsApp                         [Address]                  │
+│                                  [Directions]               │
+│                                                             │
+│ ─────────────────────────────────────────────────────────── │
+│                                                             │
+│ © Nest Library       Privacy • Terms • Rules                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# 42. MOBILE STICKY CTA
+
+On mobile:
+
+```text
+┌──────────────────────────────────────────┐
+│  📞 Call     💬 WhatsApp     📅 Visit   │
+└──────────────────────────────────────────┘
+```
+
+It should:
+
+* Stay above browser safe area
+* Not cover content
+* Have large touch targets
+* Be dismissible if needed
+* Track clicks
+
+---
+
+# 43. WHATSAPP UI
+
+WhatsApp can appear in:
+
+### Navbar
+
+`WhatsApp`
+
+### Hero
+
+`WhatsApp Us`
+
+### Seat cards
+
+`Ask on WhatsApp`
+
+### Pricing
+
+`Enquire on WhatsApp`
+
+### Visit
+
+`WhatsApp to Book`
+
+### Floating button
+
+Small floating WhatsApp button on desktop/mobile.
+
+Every CTA should generate a **contextual prefilled message**.
+
+---
+
+# 44. CTA HIERARCHY
+
+Don't make every button orange.
+
+### Primary
+
+Orange:
+
+**View Plans**
+
+### Secondary
+
+Outline:
+
+**Book a Visit**
+
+### Tertiary
+
+Text:
+
+**Explore Seats →**
+
+### Communication
+
+WhatsApp styling.
+
+This creates hierarchy.
+
+---
+
+# 45. CARD DESIGN LANGUAGE
+
+Cards should be:
+
+* Moderately rounded
+* Thin border
+* Soft shadow only where needed
+* Strong typography
+* Good whitespace
+* Real photography
+
+Avoid:
+
+> 15 identical rounded white cards floating on a gradient background.
+
+---
+
+# 46. SECTION RHYTHM
+
+The homepage should alternate:
+
+```text
+DARK
+Hero
+
+WHITE
+Why Nest
+
+LIGHT
+Environment
+
+WHITE
+Facilities
+
+DARK
+Seat Options
+
+WHITE
+Pricing
+
+GOLD/ORANGE ACCENT
+Opening Offer
+
+WHITE
+Gallery
+
+LIGHT
+Reviews
+
+WHITE
+FAQ
+
+DARK
+Final CTA
+
+DARKER
+Footer
+```
+
+This prevents visual monotony.
+
+---
+
+# 47. SCROLL EXPERIENCE
+
+The website should feel like a visual story.
+
+Example:
+
+```text
+Hero
+ ↓
+large whitespace
+ ↓
+value
+ ↓
+image
+ ↓
+features
+ ↓
+image
+ ↓
+seats
+ ↓
+pricing
+ ↓
+gallery
+ ↓
+trust
+ ↓
+CTA
+```
+
+Not:
+
+```text
+Hero
+20 cards
+20 cards
+20 cards
+footer
+```
+
+---
+
+# 48. MOTION STRATEGY
+
+Motion should support storytelling.
+
+### Scroll reveal
+
+Sections gently appear when entering viewport.
+
+### Stagger
+
+Cards appear sequentially.
+
+### Image reveal
+
+Images can use subtle clip/reveal.
+
+### Hover
+
+Desktop cards:
+
+```text
+translateY(-4px)
+```
+
+### Buttons
+
+Small press animation.
+
+### Navigation
+
+Smooth menu transitions.
+
+### Popup
+
+Scale + fade.
+
+---
+
+# 49. MOTION RESTRICTIONS
+
+Never use:
+
+* Constant floating objects
+* Excessive parallax
+* Heavy 3D
+* Long page transitions
+* Flashing
+* Bouncing everything
+* Scroll hijacking
+
+The visitor is here to learn about a **study center**, so the site itself should feel calm.
+
+---
+
+# 50. RESPONSIVE DESIGN
+
+The design must be created mobile-first.
+
+## 375px
+
+Everything must fit.
+
+## 390px
+
+Primary phone target.
+
+## 430px
+
+Large phone.
+
+## 768px
+
+Tablet.
+
+## 1024px
+
+Small laptop/tablet landscape.
+
+## 1280px
+
+Desktop.
+
+## 1440px
+
+Large desktop.
+
+## 1920px
+
+Ultra-wide.
+
+---
+
+# 51. MOBILE SECTION TRANSFORMATION
+
+Desktop:
+
+```text
+Image | Text
+```
+
+Mobile:
+
+```text
+Image
+Text
+```
+
+Desktop:
+
+```text
+2 pricing columns
+```
+
+Mobile:
+
+```text
+Regular
+↓
+Confirmed
+```
+
+Desktop navbar:
+
+```text
+Full navigation
+```
+
+Mobile:
+
+```text
+Hamburger
+```
+
+Desktop gallery:
+
+```text
+Masonry
+```
+
+Mobile:
+
+```text
+2-column grid
+```
+
+---
+
+# 52. TOUCH TARGETS
+
+Minimum comfortable touch targets:
+
+```text
+~44px+
+```
+
+Buttons should never be tiny.
+
+Forms should be easy to use with one hand.
+
+---
+
+# 53. FORM UI
+
+Forms should feel premium rather than like a generic HTML form.
+
+Example:
+
+```text
+┌──────────────────────────────────────────┐
+│ BOOK A VISIT                             │
+│                                          │
+│ Full Name                                │
+│ ┌──────────────────────────────────────┐ │
+│ │ Your name                            │ │
+│ └──────────────────────────────────────┘ │
+│                                          │
+│ Phone                                    │
+│ ┌──────────────────────────────────────┐ │
+│ │ +91                                  │ │
+│ └──────────────────────────────────────┘ │
+│                                          │
+│ Preferred Date                           │
+│                                          │
+│ Preferred Time                           │
+│                                          │
+│ [Book My Visit]                          │
+└──────────────────────────────────────────┘
+```
+
+---
+
+# 54. FORM SUCCESS
+
+After submission:
+
+```text
+✓ Enquiry Received
+
+Thank you for contacting Nest.
+
+We'll get back to you regarding
+your enquiry.
+
+[Continue on WhatsApp]
+[Back to Home]
+```
+
+---
+
+# 55. FORM ERROR
+
+Never simply say:
+
+> Error.
+
+Instead:
+
+> Please enter a valid phone number.
+
+or:
+
+> Please select a preferred date.
+
+Accessible error states.
+
+---
+
+# 56. LOADING STATES
+
+Use:
+
+* Skeleton
+* Spinner
+* Disabled button
+* Progress feedback
+
+Never let the user wonder whether the button worked.
+
+---
+
+# 57. EMPTY STATES
+
+For future dynamic data:
+
+```text
+No seats currently available.
+
+Please contact Nest for availability.
+
+[WhatsApp Nest]
+```
+
+---
+
+# 58. SEO UI
+
+Every page should have:
+
+* Correct H1
+* H2 hierarchy
+* Internal links
+* Breadcrumb where appropriate
+* Metadata
+* OG image
+* Canonical
+
+---
+
+# 59. IMAGE STRATEGY
+
+This is extremely important.
+
+### Priority:
+
+**Actual Nest photographs**
+
+Then:
+
+**Professionally generated brand visuals**
+
+Only if actual photos aren't available for a specific decorative area.
+
+Avoid generic stock imagery wherever possible.
+
+---
+
+# 60. IMAGE ART DIRECTION
+
+When taking Nest photos, we should eventually capture:
+
+### Exterior
+
+* Building
+* Entrance
+* Signboard
+
+### Interior
+
+* Wide room shot
+* Desk rows
+* Seating
+* Lighting
+
+### Detail
+
+* Desk
+* Chair
+* Books
+* Workspace
+* Wi-Fi
+* Cooling
+
+### Human
+
+* Real members studying, with permission
+
+This will make the website much stronger than stock photography.
+
+---
+
+# 61. LOGO USAGE
+
+Logo variations:
+
+### Full logo
+
+Navbar / footer
+
+### Mark
+
+Favicon
+
+### Monochrome
+
+Dark backgrounds
+
+### Light version
+
+Dark hero/footer
+
+The logo should never be stretched.
+
+---
+
+# 62. FAVICON
+
+Use the Nest bird/nest symbol.
+
+Not a generic book emoji.
+
+---
+
+# 63. ACCESSIBILITY
+
+All components must support:
+
+* Keyboard
+* Focus
+* Screen readers
+* Labels
+* ARIA only when required
+* Contrast
+* Reduced motion
+* Accessible modal
+* Accessible navigation
+* Accessible gallery
+
+---
+
+# 64. PERFORMANCE
+
+The visual reference is image-heavy, but our website must **not become slow because of images**.
+
+Use:
+
+```text
+AVIF/WebP
+responsive srcsets
+lazy loading
+priority hero image
+fixed aspect ratios
+compressed images
+```
+
+Hero image should be optimized carefully because it is above-the-fold.
+
+---
+
+# 65. CODE ARCHITECTURE
+
+The agent should use the existing foundation.
+
+Do not rebuild it.
+
+Recommended:
+
+```text
+src/
+├── app/
+├── components/
+│   ├── ui/
+│   ├── layout/
+│   ├── navigation/
+│   ├── sections/
+│   ├── business/
+│   ├── forms/
+│   ├── gallery/
+│   ├── integrations/
+│   └── motion/
+│
+├── pages/
+│   ├── Home/
+│   ├── About/
+│   ├── Facilities/
+│   ├── Seats/
+│   ├── Membership/
+│   ├── Gallery/
+│   ├── Reviews/
+│   ├── FAQ/
+│   ├── Rules/
+│   ├── Location/
+│   ├── Contact/
+│   ├── BookVisit/
+│   ├── SeatInquiry/
+│   └── MembershipInquiry/
+│
+├── data/
+├── config/
+├── lib/
+├── hooks/
+├── styles/
+└── types/
+```
+
+---
+
+# 66. DATA-DRIVEN UI
+
+Business information should not be scattered through JSX.
+
+For example:
+
+```text
+data/
+├── seats.ts
+├── plans.ts
+├── facilities.ts
+├── faq.ts
+├── gallery.ts
+├── testimonials.ts
+└── offers.ts
+```
+
+So changing:
+
+```text
+₹7,999
+```
+
+doesn't require hunting through five components.
+
+---
+
+# 67. OFFER CONFIGURATION
+
+Use a configuration object conceptually like:
+
+```text
+openingOffer:
+  active: true
+  title: "Opening Offer"
+  expiresAt: ...
+  freeRegistration: true
+  prioritySeatSelection: true
+```
+
+Then:
+
+```text
+active = false
+```
+
+automatically removes the promotional UI.
+
+---
+
+# 68. FUTURE BACKEND BOUNDARY
+
+The frontend should already have:
+
+```text
+Website
+   ↓
+API boundary
+   ↓
+Future FastAPI
+```
+
+Don't directly connect the UI to a database.
+
+---
+
+# 69. ANALYTICS UI EVENTS
+
+Track:
+
+```text
+hero_cta_click
+plan_view
+seat_view
+opening_offer_view
+popup_open
+popup_close
+whatsapp_click
+call_click
+directions_click
+book_visit_start
+book_visit_submit
+seat_inquiry_submit
+membership_inquiry_submit
+gallery_open
+review_click
+```
+
+---
+
+# 70. FINAL HOMEPAGE WIREFRAME
+
+The agent should visualize the page approximately like this:
+
+```text
+┌──────────────────────────────────────────────┐
+│ 🔥 OPENING OFFER                             │
+├──────────────────────────────────────────────┤
+│ LOGO     NAV NAV NAV NAV       [BOOK VISIT] │
+├──────────────────────────────────────────────┤
+│                                              │
+│ NEST LIBRARY                 REAL NEST IMAGE │
+│                                              │
+│ SELF STUDY CENTER                           │
+│ CO-WORKING SPACE                            │
+│                                              │
+│ BETTER SPACE                                │
+│ BIGGER DREAMS                               │
+│                                              │
+│ [VIEW PLANS] [BOOK A VISIT]                 │
+│                                              │
+├──────────────────────────────────────────────┤
+│ AIR COOLING   WI-FI   UNISEX   STUDY SPACE │
+├──────────────────────────────────────────────┤
+│                                              │
+│              WHY NEST?                       │
+│         [3–4 value points]                   │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│ [IMAGE]       YOUR STUDY SPACE,              │
+│               OUR PRIORITY                   │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│              WHO IS NEST FOR?                │
+│                                              │
+│ [Student] [Exam] [Professional] [Self]      │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│              FACILITIES                      │
+│                                              │
+│ [AC] [WiFi] [Unisex] [Convenience]           │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│             CHOOSE YOUR SPACE                │
+│                                              │
+│ [ REGULAR ]       [ CONFIRMED ]              │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│          ADMISSION PLANS                     │
+│                                              │
+│     REGULAR        CONFIRMED                 │
+│     pricing        pricing                   │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│          🔥 OPENING OFFER                    │
+│                                              │
+│      FREE REGISTRATION                       │
+│      PRIORITY SEAT SELECTION                 │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│             HOW IT WORKS                     │
+│       01 → 02 → 03 → 04                     │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│               GALLERY                        │
+│       [ ][large][ ] [large]                  │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│           MEMBER STORIES                     │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│             REVIEWS                          │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│               FAQ                            │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│          FIND NEST                            │
+│       [MAP] [ADDRESS]                        │
+│                                              │
+├──────────────────────────────────────────────┤
+│                                              │
+│        READY TO STUDY BETTER?                │
+│                                              │
+│ [VIEW PLANS] [BOOK VISIT] [WHATSAPP]        │
+│                                              │
+├──────────────────────────────────────────────┤
+│                 FOOTER                       │
+└──────────────────────────────────────────────┘
+```
+
+---
+
+# 71. MOBILE WIREFRAME
+
+```text
+┌───────────────────────────┐
+│ NEST                 ☰    │
+├───────────────────────────┤
+│                           │
+│ NEST LIBRARY              │
+│                           │
+│ SELF STUDY CENTER         │
+│ CO-WORKING SPACE          │
+│                           │
+│ Better Space              │
+│ Bigger Dreams             │
+│                           │
+│ [REAL IMAGE]              │
+│                           │
+│ [VIEW PLANS]              │
+│ [BOOK A VISIT]            │
+│                           │
+├───────────────────────────┤
+│ AIR COOLING • WI-FI       │
+├───────────────────────────┤
+│ WHY NEST                   │
+│                           │
+│ [card]                    │
+│ [card]                    │
+│ [card]                    │
+├───────────────────────────┤
+│ IMAGE                      │
+│ TEXT                       │
+├───────────────────────────┤
+│ WHO IS NEST FOR            │
+│                           │
+│ [card] [card]             │
+│ [card] [card]             │
+├───────────────────────────┤
+│ FACILITIES                 │
+├───────────────────────────┤
+│ REGULAR SEAT               │
+├───────────────────────────┤
+│ CONFIRMED SEAT             │
+├───────────────────────────┤
+│ PRICING                    │
+├───────────────────────────┤
+│ OPENING OFFER              │
+├───────────────────────────┤
+│ GALLERY                    │
+├───────────────────────────┤
+│ REVIEWS                    │
+├───────────────────────────┤
+│ FAQ                        │
+├───────────────────────────┤
+│ LOCATION                   │
+├───────────────────────────┤
+│ FINAL CTA                  │
+└───────────────────────────┘
+
+┌───────────────────────────┐
+│ CALL | WHATSAPP | VISIT   │
+└───────────────────────────┘
+```
+
+---
+
+# 72. PAGE-LEVEL UI PLAN
+
+The homepage isn't the whole product.
+
+### `/about`
+
+Story + mission + environment + brand.
+
+### `/facilities`
+
+Detailed facility cards + photography.
+
+### `/study-environment`
+
+Visual storytelling + experience.
+
+### `/seats`
+
+Comparison between Regular and Confirmed.
+
+### `/seats/regular`
+
+Detailed Regular Seat.
+
+### `/seats/confirmed`
+
+Detailed Confirmed Seat.
+
+### `/membership`
+
+Pricing + comparison + calculator.
+
+### `/admission`
+
+How joining works + plans + enquiry.
+
+### `/gallery`
+
+Full visual gallery.
+
+### `/rules`
+
+Clear policies.
+
+### `/faq`
+
+Organized FAQ.
+
+### `/location`
+
+Map + address + directions + hours.
+
+### `/contact`
+
+Phone + WhatsApp + email + form.
+
+### `/book-a-visit`
+
+Dedicated conversion form.
+
+### `/seat-inquiry`
+
+Dedicated lead form.
+
+### `/membership-inquiry`
+
+Membership conversion form.
+
+### `/join-nest`
+
+Final admission journey.
+
+---
+
+# 73. DESIGN QUALITY BAR
+
+The agent should NOT stop at:
+
+> "The page works."
+
+The acceptance criteria should be:
+
+### Visual
+
+* Looks professionally designed
+* Strong hierarchy
+* Consistent spacing
+* No generic template feeling
+* Real Nest branding
+* Premium photography
+
+### UX
+
+* Visitor understands Nest immediately
+* Pricing is easy to find
+* Seat options are obvious
+* CTA is always accessible
+* Forms are simple
+* Mobile navigation is excellent
+
+### Technical
+
+* No TypeScript errors
+* No ESLint errors
+* Build passes
+* Tests pass
+* No horizontal overflow
+* No console errors
+* Images optimized
+* Accessible
+* Reduced motion works
+
+### Business
+
+* Opening offer visible
+* Standard pricing visible
+* WhatsApp works
+* Call works
+* Visit enquiry works
+* Seat enquiry works
+* Membership enquiry works
+* Directions works when address is configured
+
+---
+
+# 74. MOST IMPORTANT DESIGN PRINCIPLE
+
+The website should **not feel like a website full of features**.
+
+It should feel like:
+
+> **"I can see myself studying here."**
+
+That is the emotional goal.
+
+The user should move naturally through:
+
+**See → Understand → Trust → Explore → Compare → Enquire → Visit → Join.**
+
+---
+
+# 75. FINAL DESIGN DIRECTION
+
+So the reference image gives us the **visual DNA**:
+
+> **Dark premium hero + editorial typography + large photography + whitespace + orange CTA + elegant cards + dark footer.**
+
+The Nest poster gives us the **brand DNA**:
+
+> **NEST LIBRARY + bird/nest logo + navy/orange/gold + Self Study Center + Co-working Space + Better Space Bigger Dreams.**
+
+The Prime website work gives us the **business UX DNA**:
+
+> **strong CTA + WhatsApp + booking + enquiry + offer popup + responsive design + conversion tracking + local SEO + business-ready architecture.**
+
+And the library research gives us the **product DNA**:
+
+> **study-space discovery + facilities + seat information + policies + availability architecture + memberships + future reservations + attendance + renewals.**
+
+Put those four together and **that is the Nest UI direction I would give the frontend agent**.
+
+### One final implementation rule for the agent
+
+**Do not start by building every page.**
+
+Build in this order:
+
+```text
+1. Design tokens
+        ↓
+2. Global typography
+        ↓
+3. Navbar
+        ↓
+4. Footer
+        ↓
+5. Buttons / cards / badges
+        ↓
+6. Hero
+        ↓
+7. Homepage sections
+        ↓
+8. 10-second offer popup
+        ↓
+9. Mobile sticky CTA
+        ↓
+10. Responsive polish
+        ↓
+11. Inner page templates
+        ↓
+12. Forms
+        ↓
+13. Gallery
+        ↓
+14. SEO
+        ↓
+15. Analytics
+        ↓
+16. Full QA
+```
+
+**Do not let the agent invent a different design halfway through.** This document should be the visual north star; the actual business data you provide later should populate the design without changing its underlying system.

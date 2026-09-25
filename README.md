@@ -110,10 +110,10 @@ variables reach the browser; never put secrets in source.
 
 ## What remains unfinished (later phases)
 
-- Final homepage, hero, pricing, facilities, gallery and testimonial UI
-- Final navbar / footer visual design
-- Applying motion primitives to real pages (architecture is ready)
-- Wiring forms to the FastAPI backend (schemas + submission boundary ready)
-- Real business content (copy, prices, photos, timings, rules)
-- Backend, CRM, database, dashboard, payments, WhatsApp API, AI
-- Search Console property connection, analytics provider, PWA evaluation
+- Real Nest photography (`public/images/README.md` maps every slot)
+- FastAPI backend deploy per `docs/LEAD_API.md` (frontend seam is hardened:
+  12 s timeout, `businessId` scope, attribution, honeypot, size guard)
+- Owner dashboard UI (typed seam in `src/lib/adminApi.ts`, backend required)
+- WhatsApp Business provider (contract in `src/lib/whatsappProvider.ts`)
+- Owner inputs: hours, rules, email, maps URLs, reviews (`docs/PRODUCTION.md`)
+- Search Console property connection, analytics provider ID, domain + hosting

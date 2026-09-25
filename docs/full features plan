@@ -1,0 +1,2192 @@
+Yes. I’ve now combined **the Nest poster you provided + our previous Nest specification + the useful Prime Fitness website architecture + current research into study-library/reading-room and major library websites**.
+
+The key finding from the research is important: Nest is **not a traditional book-lending library website**. It is a **paid self-study center / co-working study space**. Modern Indian study-library products are increasingly centered around seat discovery, live availability, memberships, attendance, renewals, payments, WhatsApp reminders and seat maps, while major academic/public library sites emphasize excellent space discovery, filters, hours, location, policies, research/resources and clear visit planning. ([24Library][1])
+
+So I've designed the final Nest system around **that actual business model**, rather than copying a generic library template.
+
+# 📚 NEST LIBRARY — FINAL A→Z WEBSITE MASTER PLAN
+
+## 0. What we are building
+
+The Nest website will be:
+
+> **A premium, mobile-first, high-conversion website for a self-study center and co-working study space, with a future-ready booking, membership, CRM, WhatsApp and business-automation architecture.**
+
+The website has three levels:
+
+```text
+LEVEL 1
+PUBLIC WEBSITE
+↓
+Visitors discover Nest and enquire/join
+
+LEVEL 2
+BUSINESS SYSTEM
+↓
+Seats • Members • Bookings • Payments • Attendance • CRM
+
+LEVEL 3
+GROWTH SYSTEM
+↓
+WhatsApp • Follow-ups • Reviews • Renewals • Analytics • Automation • AI
+```
+
+We build **Level 1 now**, while designing the architecture so Levels 2 and 3 can be connected later without rebuilding the website.
+
+---
+
+# 1. 🐦 OFFICIAL NEST BRAND INFORMATION
+
+From the physical poster you supplied:
+
+### Name
+
+**NEST LIBRARY**
+
+### Positioning
+
+**SELF STUDY CENTER**
+
+**CO-WORKING SPACE**
+
+### Brand line
+
+**Better Space Bigger Dreams**
+
+### Supporting line
+
+**Your Study Space, Our Priority**
+
+### Current phone
+
+**7038201884**
+
+### Floor
+
+**2nd Floor**
+
+### Current displayed facilities
+
+* Air Cooling
+* Unisex
+* Wi-Fi
+* Convenience Space
+
+### Logo
+
+We will use the **actual Nest logo shown on your poster**:
+
+* Bird/nest
+* Open book
+* Circular emblem
+* Green elements
+* NEST LIBRARY wordmark
+
+We should eventually obtain the original high-resolution logo from the owner. Until then, the supplied image can serve as the reference for the logo design.
+
+---
+
+# 2. 💰 OFFICIAL PRICING CURRENTLY KNOWN
+
+## Standard Admission
+
+### Regular Seat
+
+| Duration  |  Price |
+| --------- | -----: |
+| 1 Month   |   ₹800 |
+| 3 Months  | ₹2,400 |
+| 6 Months  | ₹4,800 |
+| 8 Months  | ₹6,400 |
+| 12 Months | ₹9,600 |
+
+### Confirmed Seat
+
+| Duration  |   Price |
+| --------- | ------: |
+| 1 Month   |  ₹1,000 |
+| 3 Months  |  ₹3,000 |
+| 6 Months  |  ₹6,000 |
+| 8 Months  |  ₹8,000 |
+| 12 Months | ₹12,000 |
+
+---
+
+# 3. 🔥 OPENING OFFER
+
+The poster currently advertises:
+
+> **OPENING OFFER**
+> Limited Period — Special Introductory Prices
+
+### Regular Seat
+
+| Duration  | Opening Price |
+| --------- | ------------: |
+| 1 Month   |          ₹699 |
+| 3 Months  |        ₹1,999 |
+| 6 Months  |        ₹3,999 |
+| 8 Months  |        ₹4,999 |
+| 12 Months |        ₹7,999 |
+
+### Confirmed Seat
+
+| Duration  | Opening Price |
+| --------- | ------------: |
+| 1 Month   |          ₹899 |
+| 3 Months  |        ₹2,599 |
+| 6 Months  |        ₹4,999 |
+| 8 Months  |        ₹5,999 |
+| 12 Months |        ₹9,999 |
+
+### Opening Special
+
+**Free Registration for early admissions**
+
+**Priority Seat Selection for confirmed-seat members**
+
+### Best Value
+
+12-month plans are marked **BEST VALUE** on the poster.
+
+---
+
+# ⚠️ Important: "Free Trial"
+
+You mentioned a **free-trial popup**.
+
+The current Nest poster does **not** say "Free Trial." It says:
+
+> **Free Registration for early admissions**
+
+So we should **not advertise "Free Trial" unless the owner confirms that Nest actually offers a free trial**.
+
+Instead, the initial popup should be:
+
+### After 10 seconds
+
+> **🔥 Nest Opening Offer**
+>
+> Special introductory prices for early admissions.
+>
+> 🎁 **Free Registration**
+>
+> 🪑 **Priority Seat Selection for Confirmed Seat members**
+>
+> **[View Admission Plans]**
+> **[WhatsApp Us]**
+
+This will appear **10 seconds after the visitor opens the website**, as you requested.
+
+If the owner later confirms a real free trial, we can switch the popup configuration to:
+
+> **Try Nest Free**
+
+without rebuilding the popup system.
+
+---
+
+# 4. 🏠 COMPLETE PAGE ARCHITECTURE
+
+The public website will ultimately contain:
+
+```text
+/
+├── Home
+│
+├── About
+│
+├── Study Environment
+│
+├── Facilities
+│
+├── Seats
+│   ├── Regular Seat
+│   └── Confirmed Seat
+│
+├── Membership
+│
+├── Admission
+│
+├── Opening Offer
+│
+├── Gallery
+│
+├── Member Stories
+│
+├── Reviews
+│
+├── Rules
+│
+├── FAQ
+│
+├── Location
+│
+├── Contact
+│
+├── Book a Visit
+│
+├── Seat Inquiry
+│
+├── Membership Inquiry
+│
+└── Join Nest
+```
+
+Some of these can initially be sections rather than separate pages, then become full pages when the content justifies it.
+
+---
+
+# 5. 🏠 HOMEPAGE — FINAL SECTION ORDER
+
+This is the most important part.
+
+## Section 1 — Announcement Bar
+
+At the very top:
+
+> 🔥 **Opening Offer — Special Introductory Prices**
+
+CTA:
+
+**View Plans**
+
+This can later automatically disappear when the offer expires.
+
+---
+
+# 6. NAVBAR
+
+Desktop:
+
+```text
+NEST LIBRARY
+
+Home
+About
+Facilities
+Seats
+Membership
+Gallery
+FAQ
+
+[Book a Visit]
+[WhatsApp]
+```
+
+Mobile:
+
+```text
+NEST
+☰
+```
+
+Mobile menu should have clear CTA buttons.
+
+---
+
+# 7. HERO
+
+Hero should immediately establish:
+
+**NEST LIBRARY**
+
+**SELF STUDY CENTER • CO-WORKING SPACE**
+
+> **Better Space Bigger Dreams**
+
+Supporting copy:
+
+> A focused space designed for serious study, learning and productive work.
+
+Buttons:
+
+### Primary
+
+**View Admission Plans**
+
+### Secondary
+
+**Book a Visit**
+
+### Supporting
+
+**WhatsApp Us**
+
+The actual copy will be refined once you provide the complete business details.
+
+---
+
+# 8. QUICK TRUST STRIP
+
+Immediately below hero:
+
+```text
+❄ Air Cooling
+📶 Wi-Fi
+👥 Unisex
+🪑 Dedicated Study Space
+```
+
+Only confirmed features.
+
+---
+
+# 9. WHY NEST
+
+This is the core value proposition.
+
+Possible cards:
+
+### Focused Environment
+
+### Comfortable Study Space
+
+### Dedicated Seating
+
+### Convenient Setup
+
+### Wi-Fi
+
+### Air Cooling
+
+### Serious Study Atmosphere
+
+The exact claims will be finalized from the owner's information.
+
+---
+
+# 10. STUDY ENVIRONMENT
+
+Large visual section.
+
+Structure:
+
+```text
+Image / video
+
+Study with focus.
+Study with consistency.
+Study in an environment designed around you.
+```
+
+Show:
+
+* Seating
+* Desks
+* Lighting
+* Study environment
+* Quietness
+* Comfort
+* Workspace
+
+Research supports making study-space discovery visual and filterable, with clear descriptions, images, hours, location and policies. ([University of Michigan Library][2])
+
+---
+
+# 11. WHO IS NEST FOR?
+
+Instead of generic "customers":
+
+```text
+Competitive Exam Aspirants
+College Students
+University Students
+Professional Exam Candidates
+Self-Learners
+Working Professionals
+```
+
+Only the categories actually relevant to Nest remain.
+
+---
+
+# 12. STUDY GOAL SELECTOR
+
+Interactive component:
+
+> **What are you preparing for?**
+
+```text
+Competitive Exam
+College / University
+Professional Exam
+Self Study
+Work / Projects
+Other
+```
+
+Then show relevant information.
+
+This is inspired by the strong **space discovery/filtering** patterns used by university libraries such as Michigan and Harvard, where users can filter spaces based on characteristics and needs. ([University of Michigan Library][2])
+
+---
+
+# 13. FACILITIES
+
+Current verified facilities:
+
+### ❄ Air Cooling
+
+### 📶 Wi-Fi
+
+### 👥 Unisex
+
+### 🧰 Convenience Space
+
+Later we can add verified facilities such as:
+
+* Charging
+* Lockers
+* Drinking water
+* Washrooms
+* Parking
+* CCTV
+* Power backup
+* Reading lights
+* Desk type
+* Chair type
+
+**Only after confirmation.**
+
+---
+
+# 14. SEAT OPTIONS
+
+Major section:
+
+## Regular Seat
+
+> Flexible study option for members.
+
+**[View Regular Seat]**
+
+## Confirmed Seat
+
+> A more dedicated seat option with priority seat selection.
+
+**[View Confirmed Seat]**
+
+The exact benefit descriptions will come from Nest.
+
+---
+
+# 15. REGULAR SEAT PAGE
+
+Structure:
+
+```text
+Regular Seat
+
+Who is it for?
+What's included?
+Seat experience
+Available durations
+Pricing
+Opening offer
+Rules
+FAQ
+
+[Enquire]
+[Book a Visit]
+[WhatsApp]
+```
+
+---
+
+# 16. CONFIRMED SEAT PAGE
+
+Structure:
+
+```text
+Confirmed Seat
+
+Who is it for?
+Benefits
+Priority Seat Selection
+Seat experience
+Available durations
+Pricing
+Opening offer
+Rules
+FAQ
+
+[Enquire]
+[Join Nest]
+```
+
+---
+
+# 17. 💰 PRICING SECTION
+
+This needs to be extremely clear.
+
+### Standard price vs opening price
+
+For example:
+
+```text
+REGULAR SEAT
+
+12 Months
+
+₹9,600
+₹7,999
+
+OPENING OFFER
+
+BEST VALUE
+```
+
+But we should avoid confusing visitors with too many crossed-out prices.
+
+The pricing component should clearly distinguish:
+
+**Regular price**
+
+and
+
+**Current opening price**
+
+with terms.
+
+---
+
+# 18. 🧮 PLAN COMPARISON
+
+Visitors can compare:
+
+|           | Regular | Confirmed |
+| --------- | ------- | --------- |
+| 1 Month   | ₹699    | ₹899      |
+| 3 Months  | ₹1,999  | ₹2,599    |
+| 6 Months  | ₹3,999  | ₹4,999    |
+| 8 Months  | ₹4,999  | ₹5,999    |
+| 12 Months | ₹7,999  | ₹9,999    |
+
+Opening offer shown when active.
+
+---
+
+# 19. 🧮 MEMBERSHIP CALCULATOR
+
+Eventually:
+
+```text
+Choose Seat
+↓
+Choose Duration
+↓
+Current Price
+↓
+Savings
+↓
+Enquire
+```
+
+For example:
+
+> Regular + 6 Months
+> Standard: ₹4,800
+> Opening: ₹3,999
+> You save: ₹801
+
+The calculation should be generated from configuration, not hardcoded.
+
+---
+
+# 20. 🔥 OPENING OFFER SECTION
+
+Large conversion section:
+
+> **OPENING OFFER**
+
+> Limited Period — Special Introductory Prices
+
+Then:
+
+**Free Registration**
+
+**Priority Seat Selection for Confirmed Seat Members**
+
+**[View Plans]**
+
+**[Join Nest]**
+
+---
+
+# 21. 📅 BOOK A VISIT
+
+Inspired by appointment/visit planning patterns on major library websites, where users are given clear information before arriving. NYPL, for example, explicitly guides visitors through preparation, services, regulations and contact options before a research visit. ([New York Public Library][3])
+
+Nest:
+
+```text
+Book a Visit
+
+Name *
+Phone *
+Preferred Date
+Preferred Time
+Purpose
+Message
+
+[Book Visit]
+```
+
+Later:
+
+```text
+Website
+↓
+Booking
+↓
+CRM
+↓
+Staff
+↓
+WhatsApp confirmation
+```
+
+---
+
+# 22. 🪑 SEAT AVAILABILITY
+
+Initial version:
+
+> **Interested in a seat?**
+
+[Check Availability]
+
+We must **not display fake "12 seats available" numbers**.
+
+Future version:
+
+```text
+Regular
+🟢 Available
+
+Confirmed
+🟡 Limited
+
+Full
+🔴 Currently Full
+```
+
+Real-time systems in the current Indian study-library market commonly use live seat availability, seat maps and conflict prevention. ([24Library][1])
+
+---
+
+# 23. 🗺️ FUTURE INTERACTIVE SEAT MAP
+
+This is one of the biggest future upgrades.
+
+```text
+A01 🟢
+A02 🟢
+A03 🔴
+A04 🟢
+
+B01 🟢
+B02 🟡
+B03 🟢
+```
+
+Eventually:
+
+**Select seat → select duration → reserve → pay → confirmation.**
+
+This pattern is already used by modern study-library platforms. ([GoLibora][4])
+
+---
+
+# 24. 📸 GALLERY
+
+Gallery categories:
+
+```text
+All
+Study Space
+Seats
+Facilities
+Interior
+Exterior
+```
+
+Features:
+
+* Responsive
+* Lazy loaded
+* Optimized
+* Lightbox
+* Mobile swipe
+* Keyboard navigation
+* Alt text
+* Captions
+* Video support
+
+---
+
+# 25. 🎥 VIDEO / VIRTUAL TOUR
+
+Add later:
+
+> **Take a look inside Nest**
+
+Short walkthrough:
+
+```text
+Entrance
+↓
+Study Area
+↓
+Seats
+↓
+Facilities
+↓
+Environment
+```
+
+This can dramatically reduce uncertainty before a visit.
+
+---
+
+# 26. ⭐ REVIEWS
+
+Only genuine reviews.
+
+Potential:
+
+```text
+★★★★★
+Member review
+
+Name
+Goal / category
+```
+
+And:
+
+**Read more Google Reviews**
+
+No fabricated testimonials.
+
+---
+
+# 27. 🏆 MEMBER SUCCESS STORIES
+
+Library equivalent of gym transformation stories.
+
+Example structure:
+
+```text
+Member
+↓
+Goal
+↓
+Time at Nest
+↓
+Experience
+↓
+Achievement
+```
+
+Only publish with permission and factual claims.
+
+---
+
+# 28. 📜 RULES
+
+Clean, easy-to-scan rules.
+
+Categories:
+
+* Noise
+* Phone usage
+* Cleanliness
+* Seat usage
+* Attendance
+* Food/drinks
+* Visitors
+* Membership
+* Cancellation
+* Payment
+* Holidays
+* Other policies
+
+Policies should be understandable rather than a wall of text. Research from university library UX work specifically found that clear policies, hours, images, space descriptions and location information are useful to study-space users. ([U-M Library Blogs][5])
+
+---
+
+# 29. ❓ FAQ
+
+Categories:
+
+### Seats
+
+### Membership
+
+### Pricing
+
+### Opening Offer
+
+### Facilities
+
+### Timings
+
+### Visit
+
+### Admission
+
+### Rules
+
+### Payments
+
+### Location
+
+---
+
+# 30. 📍 LOCATION
+
+Will contain:
+
+```text
+Nest Library
+2nd Floor
+[Full address once provided]
+
+[Google Map]
+
+[Get Directions]
+
+Opening Hours
+
+[Call]
+[WhatsApp]
+```
+
+The **2nd Floor** detail is already confirmed from the poster.
+
+---
+
+# 31. 🕐 HOURS
+
+Owner-provided schedule:
+
+```text
+Monday
+Tuesday
+Wednesday
+...
+```
+
+Eventually dynamic:
+
+> 🟢 Open Now
+
+or
+
+> 🔴 Closed — Opens at XX:XX
+
+---
+
+# 32. 📞 CONTACT
+
+Contact page:
+
+```text
+Phone
+WhatsApp
+Email
+Address
+Hours
+Map
+Directions
+```
+
+Current phone:
+
+**7038201884**
+
+---
+
+# 33. 💬 WHATSAPP SYSTEM
+
+This is a major part of the website.
+
+Every important action can have a contextual WhatsApp CTA.
+
+### Homepage
+
+> Hi, I would like to know more about Nest Library.
+
+### Regular Seat
+
+> Hi, I am interested in a Regular Seat at Nest Library.
+
+### Confirmed Seat
+
+> Hi, I am interested in a Confirmed Seat.
+
+### Membership
+
+> Hi, I would like to know about Nest membership plans.
+
+### Visit
+
+> Hi, I would like to book a visit.
+
+### Opening Offer
+
+> Hi, I would like to know more about the Nest opening offer.
+
+---
+
+# 34. 📱 MOBILE STICKY CTA
+
+On mobile:
+
+```text
+┌──────────────────────────────┐
+│ 📞 Call │ 💬 WhatsApp │ 📅 Visit │
+└──────────────────────────────┘
+```
+
+It should not block content.
+
+---
+
+# 35. 🔥 10-SECOND OFFER POPUP
+
+Exactly as you requested.
+
+### Trigger
+
+**10 seconds after page load**
+
+### Don't show immediately.
+
+### Popup:
+
+> 🔥 **Nest Opening Offer**
+>
+> Limited-period introductory pricing.
+>
+> 🎁 Free Registration for early admissions
+>
+> 🪑 Priority Seat Selection for Confirmed Seat members
+>
+> **[View Plans]**
+>
+> **[WhatsApp Us]**
+>
+> `×`
+
+### Behavior
+
+* Show once per session
+* Don't repeatedly annoy the user
+* Don't show again immediately after closing
+* Respect reduced motion
+* Mobile-friendly
+* Keyboard accessible
+* Escape to close
+* Focus trapped inside dialog
+* Don't cover the entire screen unnecessarily
+* Analytics event when opened/closed/CTA clicked
+
+And if the owner later confirms a genuine **free trial**, the popup can be changed.
+
+---
+
+# 36. 📲 WHATSAPP AFTER FORM SUBMISSION
+
+Eventually:
+
+```text
+User submits enquiry
+↓
+Success screen
+↓
+"Want faster assistance?"
+↓
+[Continue on WhatsApp]
+```
+
+Later backend automation:
+
+```text
+Lead created
+↓
+WhatsApp confirmation
+↓
+Staff notification
+↓
+Follow-up
+```
+
+WhatsApp is particularly relevant in Indian library-management products, where automated fee/renewal reminders are already a common feature. ([Campus Connect][6])
+
+---
+
+# 37. 📝 FORMS
+
+### Seat Inquiry
+
+```text
+Name
+Phone / WhatsApp
+Student / Professional
+Study Goal
+Preferred Duration
+Seat Preference
+Preferred Timing
+Message
+```
+
+### Book Visit
+
+```text
+Name
+Phone
+Date
+Time
+Purpose
+Message
+```
+
+### Membership Inquiry
+
+```text
+Name
+Phone
+Seat Type
+Plan
+Duration
+Message
+```
+
+### Contact
+
+```text
+Name
+Phone
+Email
+Message
+```
+
+---
+
+# 38. 🧾 ADMISSION FLOW
+
+Initial version:
+
+```text
+View plan
+↓
+Select seat type
+↓
+Select duration
+↓
+Submit enquiry
+↓
+WhatsApp / staff confirmation
+```
+
+Future:
+
+```text
+Select plan
+↓
+Select seat
+↓
+Customer details
+↓
+Payment
+↓
+Membership created
+↓
+Seat assigned
+↓
+Digital confirmation
+```
+
+---
+
+# 39. 💳 FUTURE ONLINE PAYMENTS
+
+Future support for:
+
+* UPI
+* Cards
+* Net banking
+* Payment confirmation
+* Receipts
+* Refunds
+* Payment history
+
+We should not install payment SDKs into the current frontend prematurely.
+
+---
+
+# 40. 👤 FUTURE MEMBER PORTAL
+
+Eventually:
+
+```text
+My Nest
+├── Membership
+├── Seat
+├── Expiry
+├── Attendance
+├── Payments
+├── Receipts
+├── Renew
+├── Notifications
+└── Support
+```
+
+Modern study-library systems increasingly provide student accounts tied to seat, payment, attendance and renewal history. ([Google Play][7])
+
+---
+
+# 41. 🎫 QR CHECK-IN
+
+Future:
+
+```text
+Member
+↓
+QR code
+↓
+Scan at Nest
+↓
+Attendance recorded
+```
+
+Modern study-library platforms already use QR-based attendance/check-in. ([SeatZo][8])
+
+---
+
+# 42. 🔄 RENEWAL AUTOMATION
+
+Future:
+
+```text
+Membership expires in 7 days
+↓
+WhatsApp reminder
+↓
+Email/SMS if configured
+↓
+Renew CTA
+↓
+Payment
+↓
+Seat retained
+```
+
+Renewal reminders are a recurring pattern across current study-library systems. ([Readers Club][9])
+
+---
+
+# 43. 🪑 SEAT MANAGEMENT
+
+Future staff system:
+
+```text
+Seat
+├── Number
+├── Type
+├── Status
+├── Member
+├── Start date
+├── End date
+└── Shift
+```
+
+Statuses:
+
+```text
+Available
+Reserved
+Occupied
+Maintenance
+Blocked
+```
+
+---
+
+# 44. 📅 SHIFT MANAGEMENT
+
+If Nest introduces shifts later:
+
+```text
+Morning
+Afternoon
+Evening
+Night
+Full Day
+24 Hours
+```
+
+The system should support them without architectural changes. Multi-shift support is a common capability in current Indian study-space platforms. ([24Library][1])
+
+---
+
+# 45. 📊 ANALYTICS
+
+We won't just measure visitors.
+
+Track:
+
+```text
+Visitors
+↓
+Page views
+↓
+CTA clicks
+↓
+WhatsApp
+↓
+Calls
+↓
+Directions
+↓
+Seat enquiries
+↓
+Visits
+↓
+Membership enquiries
+↓
+Admissions
+```
+
+Important events:
+
+```text
+page_view
+cta_click
+whatsapp_click
+call_click
+directions_click
+
+pricing_view
+seat_view
+seat_inquiry_start
+seat_inquiry_submit
+
+visit_start
+visit_submit
+
+membership_view
+membership_inquiry
+
+opening_offer_view
+opening_offer_click
+popup_open
+popup_close
+```
+
+---
+
+# 46. 📈 CONVERSION ATTRIBUTION
+
+Eventually know:
+
+```text
+Google Search
+   ↓
+Website
+   ↓
+Membership
+```
+
+or:
+
+```text
+Instagram
+↓
+Website
+↓
+WhatsApp
+↓
+Admission
+```
+
+Sources:
+
+* Google
+* Instagram
+* Facebook
+* WhatsApp
+* QR code
+* Direct
+* Referral
+* Other
+
+This will connect beautifully to your future Growth AI Ops.
+
+---
+
+# 47. 🔎 SEO
+
+Every page gets:
+
+* Title
+* Meta description
+* Canonical
+* OG image
+* Twitter/social metadata
+* Proper headings
+* Semantic HTML
+* Internal links
+* Alt text
+* Sitemap
+* Robots
+* Favicon
+* Structured data when accurate
+* Breadcrumbs where useful
+
+---
+
+# 48. 📍 LOCAL SEO
+
+Very important for Nest.
+
+Potential search intent:
+
+```text
+study library near me
+self study center near me
+reading room near me
+study space near me
+library in Nagpur
+study library Nagpur
+reading room Nagpur
+self study center Nagpur
+study space Nagpur
+```
+
+Once the complete address is available, we'll optimize local pages properly.
+
+---
+
+# 49. 🗺️ GOOGLE BUSINESS INTEGRATION
+
+Website should connect with the Google Business Profile through:
+
+* Directions
+* Review CTA
+* Business information consistency
+* Map
+* Website URL
+* Review QR
+
+The QR concept you previously asked about for Prime also applies very well here.
+
+### Physical Nest QR
+
+```text
+SCAN TO REVIEW NEST
+       ↓
+Google Review
+```
+
+---
+
+# 50. 📱 SOCIAL MEDIA
+
+Footer can eventually contain:
+
+* Instagram
+* Facebook
+* YouTube
+* Other official channels
+
+Only real accounts.
+
+---
+
+# 51. 📰 CONTENT / BLOG
+
+Future SEO engine:
+
+```text
+/blog
+```
+
+Categories:
+
+* Study Tips
+* Productivity
+* Exam Preparation
+* Student Life
+* Career
+* Self Study
+* Time Management
+
+But we don't create low-quality AI content merely for SEO.
+
+---
+
+# 52. 📢 ANNOUNCEMENT SYSTEM
+
+Future admin can publish:
+
+```text
+New Offer
+Holiday
+Timing Change
+Maintenance
+New Facility
+New Seats
+Event
+Important Notice
+```
+
+Website automatically displays the active announcement.
+
+---
+
+# 53. 📅 EVENTS
+
+If Nest starts hosting events:
+
+```text
+Events
+├── Upcoming
+├── Registration
+└── Past
+```
+
+Examples:
+
+* Study sessions
+* Orientation
+* Workshops
+* Exam strategy
+* Community events
+
+---
+
+# 54. 🎁 REFERRAL SYSTEM
+
+Future:
+
+```text
+Member
+↓
+Referral link/code
+↓
+Friend joins
+↓
+Reward
+```
+
+The reward is configurable by the owner.
+
+---
+
+# 55. 🧑‍💼 STAFF DASHBOARD — FUTURE
+
+```text
+TODAY
+
+New Enquiries       8
+Visits              3
+Renewals            4
+Pending Follow-ups  6
+
+Seat Status
+
+Available           XX
+Occupied            XX
+Reserved            XX
+```
+
+---
+
+# 56. 👑 OWNER DASHBOARD — FUTURE
+
+```text
+NEST BUSINESS
+
+Revenue
+Active Members
+Occupancy
+New Leads
+Visits
+Admissions
+Renewals
+Outstanding Fees
+Conversion Rate
+Lead Sources
+```
+
+---
+
+# 57. 🤖 FUTURE AI LAYER
+
+Eventually:
+
+### AI enquiry assistant
+
+Answers:
+
+* Plans
+* Timings
+* Facilities
+* Rules
+* Location
+* Admission process
+
+### Lead qualification
+
+### Follow-up assistant
+
+### Renewal assistant
+
+### Review-request assistant
+
+### Business analytics assistant
+
+But we won't put a useless chatbot on the site just to call it "AI."
+
+---
+
+# 58. 🔐 SECURITY
+
+Current frontend:
+
+* No secrets
+* No API keys exposed
+* Environment variables
+* Secure external links
+* Input validation
+* Safe forms
+
+Future backend:
+
+```text
+HTTPS
+CORS
+Rate limiting
+Authentication
+RBAC
+Validation
+Audit logs
+Business isolation
+Data protection
+```
+
+---
+
+# 59. ♿ ACCESSIBILITY
+
+The entire website:
+
+* Keyboard accessible
+* Proper focus states
+* Semantic HTML
+* Form labels
+* Error messages
+* Accessible popup
+* Accessible navigation
+* Accessible gallery
+* Proper contrast
+* Reduced-motion support
+* Touch-friendly controls
+
+The W3C guidance also emphasizes discoverability and accessible search/filter experiences. ([W3C][10])
+
+---
+
+# 60. ⚡ PERFORMANCE
+
+Our existing foundation already targets this.
+
+We'll maintain:
+
+* Optimized images
+* WebP/AVIF where appropriate
+* Responsive image sizes
+* Lazy loading
+* Minimal JS
+* Code splitting
+* No unnecessary libraries
+* Fast fonts
+* No layout shift
+* Efficient animation
+
+Target:
+
+**Excellent mobile performance.**
+
+---
+
+# 61. 📱 RESPONSIVE SYSTEM
+
+One codebase.
+
+Test:
+
+```text
+375px
+390px
+430px
+768px
+1024px
+1280px
+1440px
+1920px
+```
+
+Must work on:
+
+* Phone
+* Tablet
+* Laptop
+* Desktop
+
+No horizontal scrolling.
+
+---
+
+# 62. 🎨 VISUAL DIRECTION
+
+We should take the **actual Nest poster identity** and modernize it.
+
+Current visual language:
+
+* Navy blue
+* Orange
+* Gold/yellow
+* Green
+* White
+
+We should preserve the recognizable brand while creating a more premium website.
+
+### Design personality
+
+**Focused + premium + calm + ambitious + academic + modern**
+
+Not:
+
+* Generic SaaS
+* Overloaded gradients
+* Excessive glass
+* Excessive animation
+* Cartoonish design
+* Stock-photo-heavy website
+
+---
+
+# 63. ✨ MOTION SYSTEM
+
+Already installed.
+
+We'll use:
+
+* Fade
+* Reveal
+* Stagger
+* Scale
+* Slide
+* Page transitions
+* Hover lift
+* Tap feedback
+
+But animations remain subtle.
+
+Major hero animation:
+
+**~600–900ms**
+
+Normal UI:
+
+**~150–300ms**
+
+And respect:
+
+```text
+prefers-reduced-motion
+```
+
+---
+
+# 64. 🔍 SEARCH
+
+For the current small website, global search is optional.
+
+But architecture can support:
+
+```text
+Search Nest
+```
+
+Later it could search:
+
+* Pages
+* FAQs
+* Facilities
+* Plans
+* Blog
+* Resources
+
+Major library websites demonstrate the value of powerful discovery/search, especially where content collections are large. ([NYPL Digital Collections][11])
+
+For Nest today, **good navigation is more important than adding a search box that searches five pages**.
+
+---
+
+# 65. 🧭 SPACE DISCOVERY / FILTERS
+
+Future:
+
+```text
+Find Your Space
+
+Seat Type
+Noise Level
+AC
+Power
+Locker
+Availability
+Timing
+```
+
+This is based on a strong pattern from university library space finders: users can filter study spaces by noise level, furniture, features, room type, availability and other characteristics. ([University of Michigan Library][2])
+
+---
+
+# 66. 🧠 THE MOST IMPORTANT FUTURE FEATURE: REAL-TIME AVAILABILITY
+
+Eventually:
+
+> **See what's available before you come.**
+
+This addresses a real problem identified by current Indian study-library systems: double bookings, uncertain availability and manual seat management. ([24Library][1])
+
+---
+
+# 67. 🪪 DIGITAL MEMBER ID
+
+Future:
+
+```text
+NEST MEMBER
+
+Name
+Member ID
+Seat
+Plan
+Valid Until
+QR Code
+```
+
+---
+
+# 68. 💳 DIGITAL RECEIPTS
+
+Future:
+
+```text
+Payment
+↓
+Receipt
+↓
+PDF / WhatsApp / Email
+```
+
+---
+
+# 69. 📊 OWNER REPORTING
+
+Future reports:
+
+### Daily
+
+* Admissions
+* Visits
+* Attendance
+* Collections
+
+### Weekly
+
+* Leads
+* Conversion
+* Occupancy
+* Renewals
+
+### Monthly
+
+* Revenue
+* Occupancy
+* Churn
+* New members
+* Renewals
+* Source performance
+
+---
+
+# 70. 🏢 FUTURE MULTI-BRANCH ARCHITECTURE
+
+We should keep the data model ready for:
+
+```text
+Nest
+├── Branch 1
+├── Branch 2
+└── Branch 3
+```
+
+Even if Nest currently has only one location.
+
+---
+
+# 71. 🔗 FUTURE PRIME + NEST ECOSYSTEM
+
+This is especially important because you are building both businesses.
+
+Eventually:
+
+```text
+             PRIME FITNESS
+                   │
+                   │
+            SHARED GROWTH
+               SYSTEM
+                   │
+                   │
+              NEST LIBRARY
+```
+
+Shared:
+
+* CRM
+* Leads
+* WhatsApp
+* Analytics
+* Reviews
+* Campaigns
+* Customers
+* Notifications
+* Business dashboards
+
+But:
+
+**Prime data stays Prime.**
+
+**Nest data stays Nest.**
+
+Strict business isolation.
+
+---
+
+# 72. 🏗️ FINAL TECHNICAL ARCHITECTURE
+
+Current:
+
+```text
+React
+│
+├── UI
+├── Pages
+├── Components
+├── Forms
+├── SEO
+├── Analytics
+├── WhatsApp
+├── Maps
+└── Business Configuration
+```
+
+Future:
+
+```text
+Nest Website
+       ↓
+FastAPI
+       ↓
+Nest Business API
+       ↓
+PostgreSQL
+       ↓
+CRM / Membership / Seat Engine
+       ↓
+Automation
+       ↓
+WhatsApp / Email / Notifications
+       ↓
+Owner Dashboard
+```
+
+---
+
+# 73. 📦 WHAT WE HAVE ALREADY BUILT IN THE FOUNDATION
+
+This is important: **we don't need to rebuild these.**
+
+Already prepared:
+
+* React
+* TypeScript
+* Vite
+* Tailwind
+* React Router
+* Motion
+* Lucide
+* React Hook Form
+* Zod
+* ESLint
+* Prettier
+* Vitest
+* Playwright
+* Responsive architecture
+* Design tokens
+* Motion tokens
+* Form schemas
+* SEO architecture
+* Analytics abstraction
+* WhatsApp integration boundary
+* Phone integration
+* Email integration
+* Maps integration
+* API boundary
+* Environment configuration
+* Testing
+* Accessibility foundation
+
+So now we're moving from:
+
+> **ENGINEERING FOUNDATION**
+
+to:
+
+> **ACTUAL NEST WEBSITE PRODUCT.**
+
+---
+
+# 🗺️ FINAL HOMEPAGE
+
+The final homepage I would lock as:
+
+```text
+1. Announcement Bar
+        ↓
+2. Navbar
+        ↓
+3. Hero
+        ↓
+4. Quick Trust / Facilities
+        ↓
+5. Why Nest
+        ↓
+6. Study Environment
+        ↓
+7. Who Nest Is For
+        ↓
+8. Facilities
+        ↓
+9. Seat Options
+        ↓
+10. Admission Plans
+        ↓
+11. Opening Offer
+        ↓
+12. Opening Special
+        ↓
+13. How Joining Works
+        ↓
+14. Gallery
+        ↓
+15. Member Stories
+        ↓
+16. Genuine Reviews
+        ↓
+17. Rules / Expectations
+        ↓
+18. FAQ
+        ↓
+19. Location + Map
+        ↓
+20. Book a Visit CTA
+        ↓
+21. Final Join CTA
+        ↓
+22. Footer
+```
+
+And separately:
+
+**10-second Opening Offer popup**
+
+plus:
+
+**mobile sticky Call / WhatsApp / Visit bar.**
+
+---
+
+# 🧩 FINAL FEATURE STATUS
+
+### 🟢 BUILD NOW
+
+* Homepage
+* Navbar
+* Footer
+* About
+* Study Environment
+* Facilities
+* Seats
+* Regular Seat
+* Confirmed Seat
+* Membership
+* Admission
+* Opening Offer
+* Gallery
+* Reviews
+* Rules
+* FAQ
+* Location
+* Contact
+* Book a Visit
+* Seat Inquiry
+* Membership Inquiry
+* Join Nest
+* WhatsApp
+* Call
+* Directions
+* 10-second offer popup
+* Mobile sticky CTA
+* SEO
+* Local SEO foundation
+* Analytics
+* Responsive design
+* Accessibility
+* Performance
+
+### 🟡 BUILD AFTER OWNER DETAILS
+
+* Full address
+* Exact hours
+* Complete facilities
+* Actual photographs
+* Exact seat specifications
+* Exact confirmed-seat benefits
+* Rules
+* Payment methods
+* Cancellation policy
+* Google Business URL
+* Social links
+* Opening-offer expiry
+* Genuine reviews
+
+### 🔵 FUTURE BUSINESS SYSTEM
+
+* Live seat availability
+* Interactive seat map
+* Online seat reservation
+* Online payments
+* QR check-in
+* Attendance
+* Member portal
+* Digital ID
+* Receipts
+* Renewals
+* Automated WhatsApp
+* CRM
+* Staff dashboard
+* Owner dashboard
+* Revenue analytics
+* Referral system
+* Multi-branch
+* AI assistant
+* Automated follow-up
+* Review automation
+* Retention automation
+
+---
+
+# 🔥 WHAT THE RESEARCH CHANGED
+
+I specifically wouldn't copy traditional library websites wholesale.
+
+Large library sites such as NYPL and the British Library are strong at **visit planning, research/resource discovery, services, events, policies and rich content**. ([New York Public Library][3])
+
+University library sites are particularly useful for Nest because they make **study-space discovery** a first-class experience: filters, noise level, features, room type, hours, maps and reservations. ([University of Michigan Library][2])
+
+Indian self-study platforms add the business side: **seat maps, multi-shift scheduling, memberships, attendance, fees, renewals, QR check-in and WhatsApp communication**. ([24Library][1])
+
+And current Nagpur study-library sites show that **specific seat/space information, pricing, amenities, availability and strong local CTAs** are central to competing for local students. ([Todospaces][12])
+
+So our Nest website combines those three worlds:
+
+> **Premium brand website + study-space discovery + local conversion + future library operations system.**
+
+---
+
+# 🚀 THE FINAL STRATEGY
+
+I would **lock this as the master Nest Website Specification**.
+
+Then we should **not jump directly into building 50 pages**.
+
+Our next build sequence should be:
+
+```text
+MASTER SPECIFICATION
+        ↓
+REAL BUSINESS DATA
+        ↓
+DESIGN SYSTEM
+        ↓
+NAVBAR + FOOTER
+        ↓
+HOMEPAGE
+        ↓
+RESPONSIVE POLISH
+        ↓
+SEATS + MEMBERSHIP
+        ↓
+FACILITIES + ENVIRONMENT
+        ↓
+GALLERY + REVIEWS
+        ↓
+FORMS + WHATSAPP
+        ↓
+LOCATION + FAQ + RULES
+        ↓
+SEO + LOCAL SEO
+        ↓
+ANALYTICS
+        ↓
+PERFORMANCE
+        ↓
+ACCESSIBILITY
+        ↓
+FULL QA
+        ↓
+GITHUB
+        ↓
+DEPLOYMENT
+        ↓
+LIVE WEBSITE
+```
+
+**One correction I strongly recommend:** until Nest confirms otherwise, call the 10-second promotion **"Opening Offer / Free Registration"**, not **"Free Trial."** The physical poster currently supports free registration, not a free trial. That keeps the website truthful while still giving you the conversion popup you want.
+
+The result will be a website that can start as a **high-quality Nest Library website today** and later grow into the **actual digital operating front-end for the Nest business**. 🚀
+
+[1]: https://24library.com/blog/library-seat-booking-system-india?utm_source=chatgpt.com "Library Seat Booking System India 2026 | AI Allocation, QR Check-In & Best Options"
+[2]: https://lib.umich.edu/visit-and-study/study-spaces/?utm_source=chatgpt.com "Study Spaces | University of Michigan Library"
+[3]: https://www.nypl.org/research/visit/plan?utm_source=chatgpt.com "Plan Your Research Visit | The New York Public Library"
+[4]: https://www.golibora.com/?utm_source=chatgpt.com "GoLibora — All-in-One Library Management Software & SaaS ERP"
+[5]: https://blogs.lib.umich.edu/tiny-studies/working-collaboration-library-environments-ux-research-team-and-library-information?utm_source=chatgpt.com "Working in Collaboration: The Library Environments UX Research Team and The Library Information Technology Design and Discovery Team"
+[6]: https://campusconnect.salarybox.in/blog/10-best-library-management-software-in-india-2026-features-pricing?utm_source=chatgpt.com "10 Best Library Management Software in India 2026 (Features & Pricing) | SalaryBox CampusConnect"
+[7]: https://play.google.com/store/apps/details?id=in.libri.libri&utm_source=chatgpt.com "Libri: Study Library App - Apps on Google Play"
+[8]: https://www.seatzo.online/?utm_source=chatgpt.com "SeatZo | Library Management Software India — Study Library & Reading Room"
+[9]: https://www.readersclub.online/?utm_source=chatgpt.com "Study Library & Reading Room — Readers Club Study Centre"
+[10]: https://www.w3.org/WAI/WCAG2/supplemental/patterns/o2p06-search/?utm_source=chatgpt.com "Provide Search | Cognitive Accessibility Design Pattern | WAI | W3C"
+[11]: https://digitalcollections.nypl.org/about?utm_source=chatgpt.com "About NYPL Digital Collections"
+[12]: https://www.todospaces.com/?utm_source=chatgpt.com "TO-DO The Reading Cafe — Reading Room & Study Space in Nagpur"

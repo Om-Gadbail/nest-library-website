@@ -1,8 +1,9 @@
 /**
  * Nest Library — central business configuration.
  *
- * Timings, rules summary and capacity below are DEMO placeholders describing
- * the shape of future content. Do not present them as real operating facts.
+ * OWNER-EDITABLE. Only confirmed facts are marked live.
+ * Anything unverified stays `isPlaceholder: true` and the UI
+ * degrades to an honest neutral state instead of inventing claims.
  */
 
 export interface OpeningHours {
@@ -13,23 +14,24 @@ export interface OpeningHours {
 }
 
 export const businessConfig = {
+  /** Hours not yet confirmed by the owner → UI shows "contact for timings". */
   openingHours: {
     days: "Monday – Sunday",
-    hours: "Timing to be confirmed",
-    note: "Demo placeholder — real opening hours will be published here.",
+    hours: "Timings on enquiry",
+    note: "Opening hours will be published here once confirmed. Call or WhatsApp Nest for current timings.",
     isPlaceholder: true,
   } as OpeningHours,
 
-  /** Structural placeholder for a future rules summary (not real rules). */
+  /**
+   * Rules are intentionally NOT pre-filled. The rules page renders only
+   * confirmed entries from data/rules.ts (currently an honest empty state).
+   */
   rulesSummary: {
-    heading: "Study-first environment",
-    points: [
-      "Placeholder: silence expectations (to be confirmed)",
-      "Placeholder: guest and visitor policy (to be confirmed)",
-      "Placeholder: seat usage expectations (to be confirmed)",
-    ],
+    heading: "A focused environment with clear expectations",
+    points: [] as string[],
     isPlaceholder: true,
   },
 
-  establishedNote: "Demo placeholder — verified business facts will go here.",
+  establishedNote:
+    "Self study center and co-working study space in New Narsala, Nagpur.",
 } as const;

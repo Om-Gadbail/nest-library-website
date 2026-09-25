@@ -1,10 +1,14 @@
 /**
- * Nest Library — design tokens (foundation defaults).
+ * Nest Library — design tokens (production brand).
  *
- * These are intentionally restrained FOUNDATION tokens, not the final Nest
- * visual identity. The palette, type scale and effects will be refined in a
- * later visual-design phase. Keep all raw values here; components must use
- * semantic tokens (CSS variables / Tailwind theme utilities), never raw hex.
+ * Brand source: real Nest poster identity.
+ * - Deep Navy   → hero / navbar / footer / headings
+ * - Nest Orange → primary CTA / offer highlights (5–10% of UI)
+ * - Warm Gold   → offer / best-value accents
+ * - Nest Green  → logo echo, success states, sparing use
+ * - White / warm neutral → main surfaces
+ *
+ * Components must consume these semantic tokens, never raw hex.
  */
 
 @import "tailwindcss";
@@ -15,87 +19,90 @@
     "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 
-  /* Type scale (foundation) */
-  --text-display: 3.5rem; /* 56px */
-  --text-h1: 2.5rem; /* 40px */
+  /* Type scale — fluid via clamp where used (see globals.css helpers). */
+  --text-display: 4rem; /* 64px desktop hero */
+  --text-h1: 2.75rem; /* 44px section */
   --text-h2: 2rem; /* 32px */
   --text-h3: 1.5rem; /* 24px */
   --text-body: 1rem; /* 16px */
   --text-small: 0.875rem; /* 14px */
   --text-label: 0.75rem; /* 12px */
 
-  /* ————— Colors (semantic, foundation defaults) ————— */
-  --color-background: #faf9f6;
-  --color-foreground: #1a1e1c;
-  --color-muted: #5f6b66;
-  --color-muted-background: #eff0ec;
+  /* ————— Brand surfaces ————— */
+  --color-background: #faf8f3;
+  --color-foreground: #17233b;
+  --color-muted: #5b6577;
+  --color-muted-background: #f0ece2;
 
-  --color-primary: #1a3c34;
-  --color-primary-foreground: #f7faf8;
-  --color-primary-muted: #dce7e1;
+  /* Primary action = Nest Orange (conversion). */
+  --color-primary: #c85e0f;
+  --color-primary-foreground: #fffaf3;
+  --color-primary-muted: #fbe8d5;
+  --color-primary-hover: #a94f0c;
 
-  --color-secondary: #e9e4d8;
-  --color-secondary-foreground: #1a1e1c;
+  /* Deep Navy = brand / structure (hero, navbar, footer, headings). */
+  --color-navy: #0f2340;
+  --color-navy-deep: #0a1830;
+  --color-navy-soft: #1b3358;
+  --color-navy-muted: #dfe7f3;
+  --color-navy-foreground: #f4f7fc;
+
+  /* Secondary = navy-tinted calm surface for secondary CTAs. */
+  --color-secondary: #0f2340;
+  --color-secondary-foreground: #f4f7fc;
 
   --color-card: #ffffff;
-  --color-card-foreground: #1a1e1c;
+  --color-card-foreground: #17233b;
 
-  --color-border: #e2e4de;
-  --color-accent: #c9a96a;
-  --color-accent-foreground: #1a1e1c;
+  --color-border: #e5dfd2;
+  --color-accent: #c9a227;
+  --color-accent-foreground: #17233b;
+  --color-gold-soft: #faf0d3;
+
+  --color-leaf: #2f7d4f;
+  --color-leaf-soft: #e2efe5;
 
   --color-success: #2f7d4f;
   --color-warning: #b7791f;
   --color-destructive: #b3402e;
 
   /* ————— Radius ————— */
-  --radius-sm: 0.375rem; /* 6px */
-  --radius-md: 0.625rem; /* 10px */
-  --radius-lg: 1rem; /* 16px */
-  --radius-xl: 1.5rem; /* 24px */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 
-  /* ————— Shadows (subtle) ————— */
-  --shadow-subtle: 0 1px 2px rgb(26 30 28 / 0.05);
+  /* ————— Shadows (restrained) ————— */
+  --shadow-subtle: 0 1px 2px rgb(15 35 64 / 0.05);
   --shadow-card:
-    0 1px 2px rgb(26 30 28 / 0.06), 0 4px 16px rgb(26 30 28 / 0.06);
+    0 1px 2px rgb(15 35 64 / 0.06), 0 4px 16px rgb(15 35 64 / 0.06);
   --shadow-raised:
-    0 2px 4px rgb(26 30 28 / 0.08), 0 12px 32px rgb(26 30 28 / 0.12);
+    0 2px 4px rgb(15 35 64 / 0.08), 0 12px 32px rgb(15 35 64 / 0.12);
 
-  /* ————— Breakpoints (single codebase, mobile-first) —————
-   * mobile:        < 480px  (base styles)
-   * large mobile:  ≥ 480px  (xs)
-   * tablet:        ≥ 768px  (md)
-   * laptop:        ≥ 1024px (lg)
-   * desktop:       ≥ 1280px (xl)
-   * large desktop: ≥ 1536px (2xl)
-   */
-  --breakpoint-xs: 30rem; /* 480px — large mobile */
-  --breakpoint-md: 48rem; /* 768px — tablet */
-  --breakpoint-lg: 64rem; /* 1024px — laptop */
-  --breakpoint-xl: 80rem; /* 1280px — desktop */
-  --breakpoint-2xl: 96rem; /* 1536px — large desktop */
+  /* ————— Breakpoints (mobile-first) ————— */
+  --breakpoint-xs: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
 
-  /* ————— Spacing rhythm —————
-   * Use Tailwind's default spacing scale (0.25rem base) and prefer
-   * section rhythm: 4rem mobile / 6rem tablet+ for vertical section padding.
-   */
+  /* ————— Spacing rhythm ————— */
   --spacing-section-mobile: 4rem;
   --spacing-section-desktop: 6rem;
 
   /* ————— Layout ————— */
-  --container-max: 76rem; /* 1216px content width */
+  --container-max: 76rem;
 }
 
-/* Expose the same semantic tokens as plain CSS variables for non-Tailwind
- * contexts (e.g. inline styles, future component libraries). Tailwind v4
- * already emits @theme values as :root variables; these aliases keep the
- * naming stable for hand-written CSS. */
+/* Stable aliases for hand-written CSS. */
 :root {
   --nest-background: var(--color-background);
   --nest-foreground: var(--color-foreground);
   --nest-muted: var(--color-muted);
   --nest-primary: var(--color-primary);
+  --nest-navy: var(--color-navy);
+  --nest-navy-deep: var(--color-navy-deep);
   --nest-border: var(--color-border);
   --nest-section-y-mobile: var(--spacing-section-mobile);
   --nest-section-y-desktop: var(--spacing-section-desktop);

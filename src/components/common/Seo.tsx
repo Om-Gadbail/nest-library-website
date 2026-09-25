@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import type { ReactNode } from "react";
 import type { PageMeta } from "../../types/common.ts";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle.ts";
-import { buildCanonicalUrl } from "../../lib/seo.ts";
+import { buildCanonicalUrl, buildPageTitle } from "../../lib/seo.ts";
 
 interface SeoProps extends PageMeta {
   /** Open Graph title override (defaults to the page title). */
   ogTitle?: string;
+  /** JSON-LD objects to emit (only verified-fact schemas). */
+  jsonLd?: Record<string, unknown>[];
 }
 
 function upsertMeta(
@@ -21,14 +23,15 @@ function upsertMeta(
 }
 
 /**
- * Minimal SEO component (foundation, no dependency).
- * Sets title, description, canonical and basic Open Graph tags per page.
+ * Production SEO component: title, description, canonical,
+ * Open Graph basics + verified-fact JSON-LD per page.
  */
 export function Seo({
   title,
   description,
   canonical,
   ogTitle,
+  jsonLd,
 }: SeoProps): ReactNode {
   useDocumentTitle(title);
 
@@ -45,7 +48,7 @@ export function Seo({
       el.setAttribute("property", "og:title");
       return el;
     });
-    ogTitleTag.setAttribute("content", ogTitle ?? title);
+    ogTitleTag.setAttribute("content", ogTitle ?? buildPageTitle(title));
 
     const ogDescriptionTag = upsertMeta(
       'meta[property="og:description"]',
@@ -72,7 +75,23 @@ export function Seo({
     } else if (canonicalLink) {
       canonicalLink.remove();
     }
-  }, [title, description, canonical, ogTitle]);
+
+    // JSON-LD lifecycle: tag per index, cleaned on change/unmount.
+    const scripts: HTMLScriptElement[] = [];
+    if (jsonLd) {
+      jsonLd.forEach((schema, index) => {
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.dataset.nestJsonLd = String(index);
+        script.text = JSON.stringify(schema);
+        document.head.appendChild(script);
+        scripts.push(script);
+      });
+    }
+    return () => {
+      for (const script of scripts) script.remove();
+    };
+  }, [title, description, canonical, ogTitle, jsonLd]);
 
   return null;
 }

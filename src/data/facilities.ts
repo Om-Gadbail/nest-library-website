@@ -1,40 +1,46 @@
 /**
- * Nest Library — facilities data (STRUCTURAL PLACEHOLDERS).
- * These entries demonstrate the data shape only. They are not real claims
- * about Nest facilities and are not rendered as facts anywhere yet.
+ * Nest Library — facilities (verified, OWNER-EDITABLE).
+ * Only poster-confirmed facilities are listed as facts.
+ * Add new entries here once the owner confirms them — no JSX changes needed.
  */
 
 import type { Facility } from "../types/content.ts";
 
 export const facilities: Facility[] = [
   {
-    id: "demo-quiet-hall",
-    title: "Example quiet hall (placeholder)",
-    description:
-      "Structural placeholder describing the shape of a future facility entry. Replace with verified facility details.",
-    icon: "book-open",
-    available: null,
+    id: "air-cooling",
+    title: "Air Cooling",
+    description: "A comfortable indoor climate for long study sessions.",
+    icon: "snowflake",
+    available: true,
     image: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
-    id: "demo-connectivity",
-    title: "Example connectivity (placeholder)",
-    description:
-      "Structural placeholder describing the shape of a future facility entry. Replace with verified facility details.",
+    id: "wifi",
+    title: "Wi-Fi",
+    description: "Stay connected for study resources and online learning.",
     icon: "wifi",
-    available: null,
+    available: true,
     image: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
-    id: "demo-comfort",
-    title: "Example comfort amenity (placeholder)",
-    description:
-      "Structural placeholder describing the shape of a future facility entry. Replace with verified facility details.",
-    icon: "armchair",
-    available: null,
+    id: "unisex",
+    title: "Unisex",
+    description: "A welcoming study space for every learner.",
+    icon: "users",
+    available: true,
     image: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
+  },
+  {
+    id: "convenience-space",
+    title: "Convenience Space",
+    description: "A convenient setup that supports focused daily study.",
+    icon: "coffee",
+    available: true,
+    image: null,
+    isPlaceholder: false,
   },
 ];

@@ -1,9 +1,11 @@
 /**
- * Nest Library — SEO configuration (foundation).
+ * Nest Library — SEO configuration (production).
  *
- * Central defaults for meta tags and structured-data readiness.
- * LocalBusiness / Organization / FAQ schemas are emitted only when real page
- * content supports them — never output schema for placeholder content.
+ * Structured data is emitted only for verified facts:
+ * - Organization / WebSite / BreadcrumbList: safe (name + positioning).
+ * - FAQPage: safe once real FAQs render (data/faq.ts).
+ * - LocalBusiness: conservative — name, phone, locality only.
+ *   No coordinates, hours, ratings or URLs are fabricated.
  */
 
 import { siteConfig } from "./site.ts";
@@ -13,24 +15,16 @@ export const seoConfig = {
   titleTemplate: `%s — ${siteConfig.name}`,
   defaultDescription: siteConfig.description,
 
-  /** Twitter/X card type used across pages. */
   twitterCard: "summary_large_image",
-
-  /** Robots default for public pages (overridden per-page when needed). */
   robots: "index, follow",
 
-  /**
-   * Structured-data readiness flags. All false until verified business facts
-   * exist. Pages check these before emitting JSON-LD.
-   */
   schemaReady: {
-    organization: false,
-    localBusiness: false,
-    webSite: false,
-    faqPage: false,
-    breadcrumbList: false,
+    organization: true,
+    localBusiness: true,
+    webSite: true,
+    faqPage: true,
+    breadcrumbList: true,
   },
 
-  /** Google Search Console verification token (empty until connected). */
   searchConsoleVerification: "",
 } as const;

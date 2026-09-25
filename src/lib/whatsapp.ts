@@ -1,33 +1,48 @@
 /**
- * Nest Library — WhatsApp link architecture (foundation).
+ * Nest Library — WhatsApp integration (production).
  *
- * The number lives in config/env — NEVER hardcode it in components.
- * Production WhatsApp Business API is out of scope; these are `wa.me` links
- * with correctly URL-encoded message templates for each conversion flow.
- * While the number is a placeholder, links resolve to `#contact-fallback`
- * so demo digits can never be mistaken for a real contact.
+ * CURRENT (live): real `wa.me` user-initiated actions with contextual,
+ * safely-encoded pre-filled messages. Number is centralized in
+ * config/contact.ts (+ VITE_WHATSAPP_NUMBER override).
+ *
+ * FUTURE (not built): server-side WhatsApp Business provider automation
+ * (admission/visit/seat confirmations, reminders, renewals). The lead
+ * pipeline in lib/leads.ts + lib/api.ts is the seam where that provider
+ * will connect — see docs/LEAD_API.md. Nothing here fakes automation.
  */
 
 import { contactConfig } from "../config/contact.ts";
 import { env } from "./env.ts";
 
 export type WhatsAppIntent =
-  "general" | "seat-availability" | "membership" | "book-visit" | "join";
+  | "general"
+  | "regular-seat"
+  | "confirmed-seat"
+  | "membership"
+  | "book-visit"
+  | "opening-offer"
+  | "seat-availability"
+  | "join";
 
 const TEMPLATES: Record<WhatsAppIntent, string> = {
-  general: "Hi Nest Library, I'd like to enquire about the study space.",
+  general: "Hi, I would like to know more about Nest Library.",
+  "regular-seat": "Hi, I am interested in the Regular Seat at Nest Library.",
+  "confirmed-seat":
+    "Hi, I am interested in the Confirmed Seat at Nest Library.",
+  membership: "Hi, I would like to know about Nest membership plans.",
+  "book-visit": "Hi, I would like to book a visit to Nest Library.",
+  "opening-offer":
+    "Hi, I would like to know more about the Nest opening offer.",
   "seat-availability":
-    "Hi Nest Library, I'd like to check current seat availability.",
-  membership: "Hi Nest Library, I'd like to enquire about membership plans.",
-  "book-visit": "Hi Nest Library, I'd like to book a visit to the space.",
-  join: "Hi Nest Library, I'd like to join Nest. Please share next steps.",
+    "Hi, I would like to check current seat availability at Nest Library.",
+  join: "Hi, I would like to join Nest Library. Please share the next steps.",
 };
 
 function digitsOnly(value: string): string {
   return value.replace(/\D/g, "");
 }
 
-/** True while no real WhatsApp number is configured. */
+/** True while a real WhatsApp number is configured. */
 export function isWhatsAppConfigured(): boolean {
   const fromEnv = env.whatsappNumber ? digitsOnly(env.whatsappNumber) : "";
   if (fromEnv.length >= 10) return true;
@@ -37,14 +52,22 @@ export function isWhatsAppConfigured(): boolean {
 
 function resolveNumber(): string {
   if (env.whatsappNumber) return digitsOnly(env.whatsappNumber);
-  return digitsOnly(contactConfig.whatsapp.value);
+  return digitsOnly(contactConfig.whatsappNumber);
 }
 
-/** Builds a `wa.me` link for the given intent (URL-encoded message). */
-export function buildWhatsAppUrl(intent: WhatsAppIntent = "general"): string {
+/**
+ * Builds a `wa.me` link for the given intent. An optional custom detail
+ * (e.g. "Regular Seat · 6 Months · ₹3,999") is appended to the template.
+ * Messages are always encoded with encodeURIComponent.
+ */
+export function buildWhatsAppUrl(
+  intent: WhatsAppIntent = "general",
+  detail?: string,
+): string {
   if (!isWhatsAppConfigured()) return "#contact-fallback";
   const number = resolveNumber();
-  const message = encodeURIComponent(TEMPLATES[intent]);
+  const base = TEMPLATES[intent];
+  const message = encodeURIComponent(detail ? `${base} (${detail})` : base);
   return `https://wa.me/${number}?text=${message}`;
 }
 

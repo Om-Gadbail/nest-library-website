@@ -1,3 +1,9 @@
+/**
+ * Nest Library — directions button.
+ * Renders only when a real Google Directions URL is configured.
+ * No dead buttons: returns null while unconfigured.
+ */
+
 import type { ReactNode } from "react";
 import { MapPin } from "lucide-react";
 import { Button } from "../ui/Button.tsx";
@@ -13,19 +19,14 @@ interface GetDirectionsButtonProps {
   className?: string;
 }
 
-/**
- * Google Directions link button. No API key required — plain shareable URL.
- * Falls back to `#location` while the real URL is unconfigured.
- */
 export function GetDirectionsButton({
-  label = "Get directions",
+  label = "Get Directions",
   variant = "primary",
   size = "md",
   className,
 }: GetDirectionsButtonProps): ReactNode {
-  const href =
-    env.googleDirectionsUrl ??
-    (contactConfig.isPlaceholder ? "#location" : contactConfig.directionsUrl);
+  const href = env.googleDirectionsUrl ?? contactConfig.directionsUrl;
+  if (!href) return null;
 
   return (
     <Button

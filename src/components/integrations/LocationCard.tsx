@@ -1,16 +1,26 @@
+/**
+ * Nest Library — address + hours + actions card.
+ * Honest states: map/directions render only when configured;
+ * hours show the owner-editable placeholder line otherwise.
+ */
+
 import type { ReactNode } from "react";
 import { Clock, MapPin } from "lucide-react";
 import { Card, CardContent } from "../ui/Card.tsx";
 import { GetDirectionsButton } from "./GetDirectionsButton.tsx";
+import { GoogleMap } from "./GoogleMap.tsx";
 import { contactConfig } from "../../config/contact.ts";
 import { businessConfig } from "../../config/business.ts";
 
 interface LocationCardProps {
   className?: string;
+  showMap?: boolean;
 }
 
-/** Address + hours + directions entry point for location/contact pages. */
-export function LocationCard({ className }: LocationCardProps): ReactNode {
+export function LocationCard({
+  className,
+  showMap = false,
+}: LocationCardProps): ReactNode {
   return (
     <Card className={className}>
       <CardContent className="space-y-4">
@@ -21,7 +31,17 @@ export function LocationCard({ className }: LocationCardProps): ReactNode {
           />
           <div>
             <h3 className="font-semibold">Find us</h3>
-            <p className="mt-1 text-muted">{contactConfig.address.value}</p>
+            <p className="mt-1 text-muted">
+              <strong className="font-semibold text-foreground">
+                {contactConfig.addressParts.floor}
+              </strong>
+              <br />
+              {contactConfig.addressParts.area},{" "}
+              {contactConfig.addressParts.city}
+              <br />
+              {contactConfig.addressParts.state},{" "}
+              {contactConfig.addressParts.country}
+            </p>
           </div>
         </div>
         <div className="flex items-start gap-3">
@@ -35,9 +55,17 @@ export function LocationCard({ className }: LocationCardProps): ReactNode {
               {businessConfig.openingHours.days} ·{" "}
               {businessConfig.openingHours.hours}
             </p>
+            {businessConfig.openingHours.isPlaceholder && (
+              <p className="mt-1 text-small text-muted">
+                Call or WhatsApp Nest for current timings.
+              </p>
+            )}
           </div>
         </div>
-        <GetDirectionsButton />
+        {showMap && <GoogleMap />}
+        <div className="flex flex-wrap gap-2">
+          <GetDirectionsButton />
+        </div>
       </CardContent>
     </Card>
   );

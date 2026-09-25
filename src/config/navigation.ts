@@ -1,10 +1,7 @@
 /**
  * Nest Library — central navigation + route-path configuration.
- *
- * Planned pages exist as placeholder routes so the information architecture
- * can be reviewed early. Only routes listed in `enabledRoutes` render real
- * placeholders today; the rest resolve to the generic placeholder page until
- * their dedicated page is built.
+ * Single source of truth for every route. Components must import
+ * paths from here, never hardcode URL strings.
  */
 
 import type { NavigationConfig } from "../types/navigation.ts";
@@ -12,26 +9,34 @@ import type { NavigationConfig } from "../types/navigation.ts";
 export const routePaths = {
   home: "/",
   about: "/about",
+  environment: "/study-environment",
   facilities: "/facilities",
-  membership: "/membership",
-  /** Legacy alias kept for existing links; canonical path is /membership. */
-  plans: "/membership-plans",
   seats: "/seats",
   seatsRegular: "/seats/regular",
   seatsConfirmed: "/seats/confirmed",
-  environment: "/study-environment",
+  membership: "/membership",
+  /** Legacy alias kept for existing links; canonical path is /membership. */
+  plans: "/membership-plans",
+  admission: "/admission",
+  openingOffer: "/opening-offer",
+  gallery: "/gallery",
+  /** Legacy alias; canonical path is /gallery. */
   photos: "/photos",
+  memberStories: "/member-stories",
+  reviews: "/reviews",
   rules: "/rules",
   faq: "/faq",
   location: "/location",
-  admission: "/admission",
   contact: "/contact",
-  seatInquiry: "/seat-inquiry",
-  /** Canonical visit path; /book-visit kept as an alias route. */
   bookVisit: "/book-a-visit",
   bookVisitAlias: "/book-visit",
-  join: "/join",
+  seatInquiry: "/seat-inquiry",
   membershipInquiry: "/membership-inquiry",
+  join: "/join-nest",
+  /** Legacy alias; canonical path is /join-nest. */
+  joinAlias: "/join",
+  privacy: "/privacy",
+  terms: "/terms",
 } as const;
 
 export type RoutePath = (typeof routePaths)[keyof typeof routePaths];
@@ -43,27 +48,31 @@ export const navigationConfig: NavigationConfig = {
     { label: "Facilities", to: routePaths.facilities },
     { label: "Seats", to: routePaths.seats },
     { label: "Plans", to: routePaths.membership },
-    { label: "Photos", to: routePaths.photos },
+    { label: "Study Environment", to: routePaths.environment },
+    { label: "Gallery", to: routePaths.gallery },
     { label: "FAQ", to: routePaths.faq },
     { label: "Contact", to: routePaths.contact },
   ],
   footerExplore: [
     { label: "About Nest", to: routePaths.about },
     { label: "Facilities", to: routePaths.facilities },
-    { label: "Study environment", to: routePaths.environment },
-    { label: "Photos", to: routePaths.photos },
-    { label: "Rules", to: routePaths.rules },
+    { label: "Seats & Plans", to: routePaths.seats },
+    { label: "Membership", to: routePaths.membership },
+    { label: "Study Environment", to: routePaths.environment },
+    { label: "Gallery", to: routePaths.gallery },
   ],
   footerSupport: [
     { label: "Admission", to: routePaths.admission },
+    { label: "Opening Offer", to: routePaths.openingOffer },
     { label: "Location", to: routePaths.location },
+    { label: "Rules", to: routePaths.rules },
     { label: "FAQ", to: routePaths.faq },
     { label: "Contact", to: routePaths.contact },
   ],
   conversions: [
-    { label: "Seat inquiry", to: routePaths.seatInquiry },
-    { label: "Book a visit", to: routePaths.bookVisit },
+    { label: "Book a Visit", to: routePaths.bookVisit },
+    { label: "Seat Inquiry", to: routePaths.seatInquiry },
+    { label: "Membership Inquiry", to: routePaths.membershipInquiry },
     { label: "Join Nest", to: routePaths.join },
-    { label: "Membership inquiry", to: routePaths.membershipInquiry },
   ],
 };

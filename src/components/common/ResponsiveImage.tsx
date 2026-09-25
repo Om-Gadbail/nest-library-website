@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { ImageOff } from "lucide-react";
 import { cn } from "../../lib/cn.ts";
 
 interface ResponsiveImageProps {
@@ -15,7 +16,8 @@ interface ResponsiveImageProps {
 
 /**
  * Responsive image foundation: reserved aspect ratio (no layout shift),
- * lazy loading support, and enforced alt text.
+ * lazy loading support, enforced alt text, graceful loading fade-in and
+ * an honest error state (labelled placeholder, never a broken-image icon).
  */
 export function ResponsiveImage({
   src,
@@ -25,18 +27,42 @@ export function ResponsiveImage({
   className,
   imgClassName,
 }: ResponsiveImageProps): ReactNode {
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
+
   return (
     <div
       className={cn("w-full overflow-hidden bg-muted-background", className)}
       style={{ aspectRatio }}
     >
-      <img
-        src={src}
-        alt={alt}
-        loading={lazy ? "lazy" : "eager"}
-        decoding="async"
-        className={cn("h-full w-full object-cover", imgClassName)}
-      />
+      {failed ? (
+        <div
+          role="img"
+          aria-label={`Photo unavailable: ${alt}`}
+          className="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center text-muted"
+        >
+          <ImageOff aria-hidden="true" className="h-6 w-6" />
+          <p className="text-small">Photo unavailable</p>
+        </div>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          loading={lazy ? "lazy" : "eager"}
+          decoding="async"
+          onLoad={() => {
+            setLoaded(true);
+          }}
+          onError={() => {
+            setFailed(true);
+          }}
+          className={cn(
+            "h-full w-full object-cover transition-opacity duration-300",
+            loaded ? "opacity-100" : "opacity-0",
+            imgClassName,
+          )}
+        />
+      )}
     </div>
   );
 }

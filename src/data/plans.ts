@@ -1,41 +1,33 @@
 /**
- * Nest Library — membership plans (STRUCTURAL PLACEHOLDERS).
- * Prices are intentionally null: real fees will be added once confirmed.
+ * Nest Library — membership plans (derived from central pricing).
+ * Backwards-compatible MembershipPlan view for generic cards.
+ * Canonical prices live in data/pricing.ts — edit there.
  */
 
 import type { MembershipPlan } from "../types/content.ts";
+import { pricedPlans } from "./pricing.ts";
+
+function toMembershipPlan(seatType: "regular" | "confirmed"): MembershipPlan[] {
+  return pricedPlans
+    .filter((plan) => plan.seatType === seatType)
+    .map((plan) => ({
+      id: plan.id,
+      name: `${plan.seatTypeLabel} — ${plan.durationLabel}`,
+      duration: plan.duration,
+      durationLabel: plan.durationLabel,
+      seatType: plan.seatTypeLabel,
+      price: plan.openingPrice,
+      priceNote: `₹${plan.openingPrice.toLocaleString("en-IN")}`,
+      features: plan.bestValue
+        ? ["Opening-offer price", "Best value for long-term study"]
+        : ["Opening-offer price"],
+      highlighted: plan.bestValue,
+      ctaLabel: plan.ctaLabel,
+      isPlaceholder: false,
+    }));
+}
 
 export const plans: MembershipPlan[] = [
-  {
-    id: "demo-plan-monthly",
-    name: "Example monthly plan (placeholder)",
-    duration: "1-month",
-    durationLabel: "1 month",
-    seatType: "Example seat type (placeholder)",
-    price: null,
-    priceNote: "Fee on enquiry",
-    features: [
-      "Example plan feature (placeholder)",
-      "Example plan feature (placeholder)",
-    ],
-    highlighted: true,
-    ctaLabel: "Enquire about this plan",
-    isPlaceholder: true,
-  },
-  {
-    id: "demo-plan-quarterly",
-    name: "Example quarterly plan (placeholder)",
-    duration: "3-month",
-    durationLabel: "3 months",
-    seatType: "Example seat type (placeholder)",
-    price: null,
-    priceNote: "Fee on enquiry",
-    features: [
-      "Example plan feature (placeholder)",
-      "Example plan feature (placeholder)",
-    ],
-    highlighted: false,
-    ctaLabel: "Enquire about this plan",
-    isPlaceholder: true,
-  },
+  ...toMembershipPlan("regular"),
+  ...toMembershipPlan("confirmed"),
 ];

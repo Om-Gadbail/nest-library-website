@@ -1,7 +1,7 @@
 /**
- * Nest Library — global stylesheet.
- * Foundation only: calm defaults, accessible focus, responsive safety.
- * Avoid aggressive global styles that would fight future components.
+ * Nest Library — global stylesheet (production).
+ * Calm academic defaults, accessible focus, responsive safety,
+ * fluid type helpers, dark-surface helpers, no horizontal overflow.
  */
 
 @import "./tokens.css";
@@ -19,7 +19,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Respect users who prefer reduced motion from day one. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -62,8 +61,8 @@ h2,
 h3,
 h4 {
   margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
@@ -72,7 +71,49 @@ p {
   text-wrap: pretty;
 }
 
-/* ————— Media defaults (responsive, no layout shift) ————— */
+/* Fluid display helpers (clamp-based, per UI plan). */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 3.4vw + 1rem, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.subsection-title {
+  font-size: clamp(1.35rem, 2vw + 0.8rem, 1.9rem);
+  line-height: 1.25;
+}
+
+/* ————— Dark premium surfaces ————— */
+
+.nest-dark {
+  background-color: var(--color-navy);
+  color: var(--color-navy-foreground);
+}
+
+.nest-dark-deep {
+  background-color: var(--color-navy-deep);
+  color: var(--color-navy-foreground);
+}
+
+.nest-hero-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 20%,
+    black 55%,
+    transparent 100%
+  );
+}
+
+/* ————— Media defaults ————— */
 
 img,
 picture,
@@ -101,7 +142,6 @@ button {
   touch-action: manipulation;
 }
 
-/* Minimum touch target for coarse pointers. */
 @media (pointer: coarse) {
   button,
   a,
@@ -112,7 +152,6 @@ button {
     min-height: 44px;
   }
 
-  /* Inline text links keep their natural height. */
   p a,
   li a {
     min-height: auto;
@@ -131,6 +170,11 @@ button {
   border-radius: var(--radius-sm);
 }
 
+.nest-dark :focus-visible,
+.nest-dark-deep :focus-visible {
+  outline-color: var(--color-accent);
+}
+
 /* ————— Selection ————— */
 
 ::selection {
@@ -138,7 +182,7 @@ button {
   color: var(--color-foreground);
 }
 
-/* ————— Skip link (rendered by RootLayout) ————— */
+/* ————— Skip link ————— */
 
 .skip-link {
   position: absolute;
@@ -157,4 +201,19 @@ button {
 .skip-link:focus-visible {
   top: 1rem;
   outline-color: var(--color-accent);
+}
+
+/* ————— Sticky mobile CTA offset —————
+ * Pages add bottom padding on small screens so the action bar
+ * never covers form actions or footer content. Focused elements
+ * also keep a scroll margin so the bar never obscures keyboard
+ * focus during scroll-into-view. */
+@media (max-width: 767px) {
+  .has-mobile-cta {
+    padding-bottom: 5.5rem;
+  }
+
+  .has-mobile-cta :focus-visible {
+    scroll-margin-bottom: 7rem;
+  }
 }

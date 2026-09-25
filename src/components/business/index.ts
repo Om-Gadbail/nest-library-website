@@ -11,3 +11,4 @@ export { TestimonialCard } from "./TestimonialCard.tsx";
 export { CTASection } from "./CTASection.tsx";
 export { ContactCard } from "./ContactCard.tsx";
 export { TrustBadge, TrustBadgeRow } from "./TrustBadge.tsx";
+export { OfferPopup } from "./OfferPopup.tsx";

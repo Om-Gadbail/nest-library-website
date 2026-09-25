@@ -65,8 +65,54 @@ export interface MembershipPlan extends PlaceholderFlag {
   ctaLabel: string;
 }
 
+export type SeatTypeId = "regular" | "confirmed";
+
+export interface PricedPlan extends PlaceholderFlag {
+  id: string;
+  seatType: SeatTypeId;
+  seatTypeLabel: string;
+  /** Machine-readable duration, e.g. "1-month". */
+  duration: string;
+  /** Human-readable duration, e.g. "1 Month". */
+  durationLabel: string;
+  /** Duration in months (used by the calculator + comparison). */
+  months: number;
+  /** Approved standard admission price (INR). */
+  standardPrice: number;
+  /** Approved opening-offer price (INR). Equals standard when offer off. */
+  openingPrice: number;
+  /** True while this duration carries the BEST VALUE badge. */
+  bestValue: boolean;
+  ctaLabel: string;
+}
+
+export interface OpeningOffer extends PlaceholderFlag {
+  active: boolean;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  /** Limited-period line, e.g. "Limited Period — Special Introductory Prices". */
+  validityNote: string;
+  freeRegistration: boolean;
+  freeRegistrationNote: string;
+  prioritySeatSelection: boolean;
+  prioritySeatSelectionNote: string;
+  primaryCtaLabel: string;
+  secondaryCtaLabel: string;
+}
+
 export type FaqCategory =
-  "general" | "seats" | "membership" | "timings" | "rules" | "visit";
+  | "general"
+  | "seats"
+  | "membership"
+  | "timings"
+  | "rules"
+  | "visit"
+  | "admission"
+  | "facilities"
+  | "location"
+  | "offer"
+  | "payments";
 
 export interface Faq extends PlaceholderFlag {
   id: string;

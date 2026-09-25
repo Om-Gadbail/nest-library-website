@@ -7,24 +7,28 @@ import { safeLinkProps } from "../../lib/urls.ts";
 
 interface WhatsAppButtonProps {
   intent?: WhatsAppIntent;
+  detail?: string;
   label?: string;
+  surface?: string;
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
 /**
- * WhatsApp deep-link button. Number + template come from central config;
- * while unconfigured the link falls back to `#contact-fallback`.
+ * WhatsApp deep-link button with contextual pre-filled message.
+ * Number + templates come from central config.
  */
 export function WhatsAppButton({
   intent = "general",
+  detail,
   label = "Chat on WhatsApp",
+  surface = "page",
   variant = "primary",
   size = "md",
   className,
 }: WhatsAppButtonProps): ReactNode {
-  const href = buildWhatsAppUrl(intent);
+  const href = buildWhatsAppUrl(intent, detail);
   const external = safeLinkProps(href);
 
   return (
@@ -34,7 +38,7 @@ export function WhatsAppButton({
       size={size}
       className={className}
       onClick={() => {
-        trackEvent("whatsapp_click", { intent });
+        trackEvent("whatsapp_click", { intent, surface });
       }}
       {...external}
     >

@@ -11,7 +11,21 @@ export interface TenantScope {
   tenantId?: string;
 }
 
-export interface SeatInquiryPayload extends TenantScope {
+/** Marketing-only attribution (UTMs, referrer, landing path, device class). */
+export interface LeadAttribution {
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  referrer?: string;
+  landingPath?: string;
+  deviceCategory?: "mobile" | "tablet" | "desktop";
+}
+
+export interface AttributedPayload {
+  attribution?: LeadAttribution;
+}
+
+export interface SeatInquiryPayload extends TenantScope, AttributedPayload {
   name: string;
   phone: string;
   occupation: "student" | "professional" | "other";
@@ -23,7 +37,7 @@ export interface SeatInquiryPayload extends TenantScope {
   message?: string;
 }
 
-export interface VisitBookingPayload extends TenantScope {
+export interface VisitBookingPayload extends TenantScope, AttributedPayload {
   name: string;
   phone: string;
   preferredDate: string;
@@ -32,7 +46,8 @@ export interface VisitBookingPayload extends TenantScope {
   message?: string;
 }
 
-export interface MembershipInquiryPayload extends TenantScope {
+export interface MembershipInquiryPayload
+  extends TenantScope, AttributedPayload {
   name: string;
   phone: string;
   plan: string;
@@ -45,6 +60,8 @@ export type ApiErrorCode =
   | "BACKEND_NOT_CONFIGURED"
   | "VALIDATION_ERROR"
   | "NETWORK_ERROR"
+  | "TIMEOUT_ERROR"
+  | "PAYLOAD_TOO_LARGE"
   | "SERVER_ERROR";
 
 export type ApiResult<T> =

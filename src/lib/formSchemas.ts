@@ -27,6 +27,25 @@ const optionalMessage = z
   .optional()
   .or(z.literal(""));
 
+/**
+ * Spam-defense honeypot. Real visitors never fill this field (it is
+ * visually hidden); bots often do. A non-empty value marks the submission
+ * as spam and it is silently discarded before persistence.
+ */
+const honeypotSchema = z
+  .string()
+  .max(200)
+  .optional()
+  .or(z.literal(""))
+  .refine((value) => !value || value.length === 0, {
+    message: "Invalid submission.",
+  });
+
+/** True when the honeypot caught a likely bot (defense-in-depth). */
+export function isHoneypotFilled(value: unknown): boolean {
+  return typeof value === "string" && value.length > 0;
+}
+
 /** Seat Inquiry — §18 field list. */
 export const seatInquirySchema = z.object({
   name: nameSchema,
@@ -40,6 +59,7 @@ export const seatInquirySchema = z.object({
   timing: z.string().trim().min(1, "Please select a timing."),
   source: z.string().trim().max(120).optional().or(z.literal("")),
   message: optionalMessage,
+  company: honeypotSchema,
 });
 
 export type SeatInquiryInput = z.infer<typeof seatInquirySchema>;
@@ -52,6 +72,7 @@ export const bookVisitSchema = z.object({
   preferredTime: z.string().min(1, "Please choose a preferred time."),
   purpose: z.string().trim().max(160).optional().or(z.literal("")),
   message: optionalMessage,
+  company: honeypotSchema,
 });
 
 export type BookVisitInput = z.infer<typeof bookVisitSchema>;
@@ -64,6 +85,7 @@ export const membershipInquirySchema = z.object({
   seatType: z.string().trim().min(1, "Please select a seat type."),
   duration: z.string().trim().min(1, "Please select a duration."),
   message: optionalMessage,
+  company: honeypotSchema,
 });
 
 export type MembershipInquiryInput = z.infer<typeof membershipInquirySchema>;
@@ -77,6 +99,7 @@ export const contactSchema = z.object({
     .trim()
     .min(5, "Please tell us briefly how we can help.")
     .max(500, "Message must be under 500 characters."),
+  company: honeypotSchema,
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

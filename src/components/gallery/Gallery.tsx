@@ -1,10 +1,17 @@
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { GalleryItem } from "../business/GalleryItem.tsx";
 import { ResponsiveImage } from "../common/ResponsiveImage.tsx";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion.ts";
 import { motionDuration, motionEasing } from "../../lib/motion.ts";
+import { trackEvent } from "../../lib/analytics.ts";
 import type { GalleryImage as GalleryImageType } from "../../types/content.ts";
 
 interface GalleryProps {
@@ -21,6 +28,10 @@ export function Gallery({ images, className }: GalleryProps): ReactNode {
   const [selected, setSelected] = useState<GalleryImageType | null>(null);
   const close = useCallback(() => {
     setSelected(null);
+  }, []);
+  const open = useCallback((image: GalleryImageType) => {
+    setSelected(image);
+    trackEvent("gallery_open", { id: image.id });
   }, []);
 
   useEffect(() => {
@@ -43,7 +54,7 @@ export function Gallery({ images, className }: GalleryProps): ReactNode {
         }
       >
         {images.map((image) => (
-          <GalleryItem key={image.id} image={image} onSelect={setSelected} />
+          <GalleryItem key={image.id} image={image} onSelect={open} />
         ))}
       </div>
       <Lightbox image={selected} onClose={close} />
@@ -80,6 +91,11 @@ export function Lightbox({
   onClose: () => void;
 }): ReactNode {
   const reduce = usePrefersReducedMotion();
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (image) closeRef.current?.focus();
+  }, [image]);
 
   return (
     <AnimatePresence>
@@ -120,6 +136,7 @@ export function Lightbox({
             <figcaption className="flex items-start justify-between gap-4 p-4">
               <span className="font-semibold">{image.title}</span>
               <button
+                ref={closeRef}
                 type="button"
                 onClick={onClose}
                 aria-label="Close photo viewer"
