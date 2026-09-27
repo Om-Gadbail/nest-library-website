@@ -168,14 +168,16 @@ test.describe("final QA — 20 points", () => {
     await expect(page).toHaveURL(/\/$/);
   });
 
-  test("Pt12/13: seat inquiry validates + honest device-saved success", async ({
+  test("Pt12/13: seat inquiry validates + honest submission state", async ({
     page,
   }) => {
     await page.goto("/seat-inquiry", { waitUntil: "domcontentloaded" });
     // Submit empty → validation errors visible
     await page.getByRole("button", { name: /send seat inquiry/i }).click();
     await expect(page.getByText(/required|enter|select/i).first()).toBeVisible();
-    // Fill valid data → honest device-noted state (no backend configured)
+    // Fill valid data → honest outcome only: server success when a
+    // compatible backend answers, otherwise the plain error state
+    // (device outbox kept, WhatsApp/phone handoff). Never a fake success.
     await page.locator("#seat-name").fill("Test Student");
     await page.locator("#seat-phone").fill("+917038201884");
     await page.locator("#seat-occupation").selectOption("student");
@@ -184,7 +186,9 @@ test.describe("final QA — 20 points", () => {
     await page.locator("#seat-timing").selectOption("morning");
     await page.getByRole("button", { name: /send seat inquiry/i }).click();
     await expect(
-      page.getByRole("heading", { name: /details noted|enquiry received/i }),
+      page
+        .getByRole("heading", { name: /details noted|enquiry received/i })
+        .or(page.getByRole("alert")),
     ).toBeVisible({ timeout: 15_000 });
     // Must not claim false server persistence
     const body = (await page.locator("#main-content").innerText()).toLowerCase();
