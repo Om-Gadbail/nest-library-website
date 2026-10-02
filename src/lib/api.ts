@@ -28,6 +28,7 @@ import type {
   VisitBookingPayload,
 } from "../types/api.ts";
 import { env } from "./env.ts";
+import { coldStartDelay, isColdStartStatus } from "./readiness.ts";
 
 /** Wall-clock budget per submission (ms). The UI surfaces retry on expiry. */
 const REQUEST_TIMEOUT_MS = 12_000;
@@ -76,9 +77,10 @@ interface IntakeSuccess {
   message?: string;
 }
 
-async function postPublic(
+async function postPublicOnce(
   path: "leads" | "bookings",
   payload: object,
+  idempotencyKey?: string,
 ): Promise<ApiResult<{ referenceId: string }>> {
   const base = baseUrl();
   if (!base) return { ok: false, error: "BACKEND_NOT_CONFIGURED" };
@@ -100,7 +102,7 @@ async function postPublic(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Idempotency-Key": makeIdempotencyKey(),
+        "Idempotency-Key": idempotencyKey ?? makeIdempotencyKey(),
       },
       body,
       signal: controller.signal,
@@ -266,3 +268,39 @@ export const apiClient = {
     );
   },
 };
+
+const NEST_PUBLIC_RETRY_ATTEMPTS = 4;
+
+function isRetryableNestResult(result: ApiResult<{ referenceId: string }>): boolean {
+  if (result.ok) return false;
+  if (result.error === "NETWORK_ERROR" || result.error === "TIMEOUT_ERROR") return true;
+  if (result.error === "SERVER_ERROR") {
+    const status = Number((result as { detail?: string }).detail);
+    if (Number.isFinite(status) && isColdStartStatus(status)) return true;
+  }
+  return false;
+}
+
+/**
+ * Render free cold-start wrapper (bounded, idempotent-safe).
+ *
+ * Retries postPublicOnce on network/timeout/edge 502-504 with exponential
+ * backoff. ONE idempotency key covers every attempt, so a retry can never
+ * create a duplicate lead/booking. Validation and oversize payloads are
+ * never retried. Form input stays in the calling form (nothing here clears
+ * it), so the user never retypes after a wake-up.
+ */
+async function postPublic(
+  path: "leads" | "bookings",
+  payload: object,
+): Promise<ApiResult<{ referenceId: string }>> {
+  const idempotencyKey = makeIdempotencyKey();
+  let last: ApiResult<{ referenceId: string }> = { ok: false, error: "NETWORK_ERROR" };
+  for (let attempt = 1; attempt <= NEST_PUBLIC_RETRY_ATTEMPTS; attempt += 1) {
+    const result = await postPublicOnce(path, payload, idempotencyKey);
+    if (!isRetryableNestResult(result) || attempt === NEST_PUBLIC_RETRY_ATTEMPTS) return result;
+    last = result;
+    await new Promise((resolve) => setTimeout(resolve, coldStartDelay(attempt)));
+  }
+  return last;
+}
